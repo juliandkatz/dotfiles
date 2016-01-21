@@ -58,6 +58,10 @@ export PATH="/Users/A780976/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:
 
 source $ZSH/oh-my-zsh.sh
 
+# Setup for nvm
+export NVM_DIR=~/.nvm
+  . $(brew --prefix nvm)/nvm.sh
+
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
@@ -82,3 +86,4 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias mcweb="cd ~/dev/mc-web"
