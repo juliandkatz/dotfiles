@@ -15,6 +15,12 @@ set incsearch         " incremental searching
 " Allows yank to pbcopy
 set clipboard=unnamed
 
+" Creates command for search for current visually selected text
+vnoremap // y/<C-R>"<CR>
+
+" <Ctrl-l> redraws the screen and removes any search highlighting.
+nnoremap <silent> <C-l> :nohl<CR><C-l>
+
 " Some settings to enable the theme:
 set number        " Show line numbers
 set background=dark
