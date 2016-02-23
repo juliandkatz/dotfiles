@@ -30,7 +30,7 @@ ZSH_THEME="steeef"
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -87,3 +87,4 @@ export NVM_DIR=~/.nvm
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias mcweb="cd ~/dev/mc-web"
+alias karma_debug="karma start karma.conf.js --browsers=Chrome --single-run=false --debug"
