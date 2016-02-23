@@ -18,8 +18,8 @@ set clipboard=unnamed
 " Creates command for search for current visually selected text
 vnoremap // y/<C-R>"<CR>
 
-" <Ctrl-l> redraws the screen and removes any search highlighting.
-nnoremap <silent> <C-l> :nohl<CR><C-l>
+" clear search highlighting
+nnoremap <silent> <leader>l :nohlsearch<CR><C-l>
 
 " Some settings to enable the theme:
 set number        " Show line numbers
@@ -57,6 +57,7 @@ NeoBundle 'elzr/vim-json'
 NeoBundle 'easymotion/vim-easymotion' 
 NeoBundle 'christoomey/vim-tmux-navigator'
 NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'scrooloose/syntastic'
 NeoBundle "Valloric/YouCompleteMe", { 'build' : { 'mac' : './install.py' } }
 " NeoBundle "marijnh/tern_for_vim", { "build": { "mac": "npm install" } }
 
@@ -69,6 +70,21 @@ filetype plugin indent on
 " If there are uninstalled bundles found on startup,
 " this will conveniently prompt you to install them.
 NeoBundleCheck
+
+"""""""""""""""""
+" Syntax Checking Setup
+""""""""""""""""
+" let g:syntastic_javascript_checkers = ['standard']
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+let g:syntastic_html_tidy_exec = 'tidy5'
 
 """""""""""""""""
 " NERDTRee settings
