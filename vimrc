@@ -76,7 +76,7 @@ NeoBundleCheck
 """""""""""""""""
 " Syntax Checking Setup
 """"""""""""""""
-" let g:syntastic_javascript_checkers = ['standard']
+let g:syntastic_javascript_checkers = ['standard']
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
