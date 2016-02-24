@@ -60,6 +60,8 @@ NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle "Valloric/YouCompleteMe", { 'build' : { 'mac' : './install.py' } }
 " NeoBundle "marijnh/tern_for_vim", { "build": { "mac": "npm install" } }
+NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'jelera/vim-javascript-syntax'
 
 " Required:
 call neobundle#end()
