@@ -18,7 +18,7 @@ set clipboard=unnamed
 " Creates command for search for current visually selected text
 vnoremap // y/<C-R>"<CR>
 
-" clear search highlighting
+" clear search highlighting, use space bar -> l
 nnoremap <silent> <leader>l :nohlsearch<CR><C-l>
 
 " Some settings to enable the theme:
@@ -59,7 +59,7 @@ NeoBundle 'christoomey/vim-tmux-navigator'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle "Valloric/YouCompleteMe", { 'build' : { 'mac' : './install.py' } }
-" NeoBundle "marijnh/tern_for_vim", { "build": { "mac": "npm install" } }
+NeoBundle 'marijnh/tern_for_vim', { 'build': { 'mac': 'npm install' } }
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'jelera/vim-javascript-syntax'
 
@@ -95,3 +95,4 @@ let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.DS_Store$']
 nnoremap <leader>n :NERDTreeFind<cr>
 nnoremap <leader>a :NERDTreeToggle<cr>
+
