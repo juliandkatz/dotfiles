@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/A780976/.zsh
+export ZSH=~/.zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -53,7 +53,7 @@ plugins=(git)
 
 # User configuration
 
-export PATH="/Users/A780976/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:/Users/A780976/.rvm/bin"
+export PATH="~/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:~/.rvm/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -88,3 +88,7 @@ export NVM_DIR=~/.nvm
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias mcweb="cd ~/dev/mc-web"
 alias karma_debug="karma start karma.conf.js --browsers=Chrome --single-run=false --debug"
+alias findn="find . -iname"
+alias weather="curl http://wttr.in/"
+alias mytime="node ~/personalDev/my-scripts/get-time.js"
+alias dockerSetup="docker-machine start default && eval \"$(docker-machine env default)\""

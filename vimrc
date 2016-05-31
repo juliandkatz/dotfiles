@@ -62,6 +62,7 @@ NeoBundle "Valloric/YouCompleteMe", { 'build' : { 'mac' : './install.py' } }
 NeoBundle 'marijnh/tern_for_vim', { 'build': { 'mac': 'npm install' } }
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'jelera/vim-javascript-syntax'
+" NeoBundle 'pangloss/vim-polyglot'
 
 " Required:
 call neobundle#end()
@@ -95,4 +96,3 @@ let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.DS_Store$']
 nnoremap <leader>n :NERDTreeFind<cr>
 nnoremap <leader>a :NERDTreeToggle<cr>
-
