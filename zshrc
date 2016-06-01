@@ -91,4 +91,4 @@ alias karma_debug="karma start karma.conf.js --browsers=Chrome --single-run=fals
 alias findn="find . -iname"
 alias weather="curl http://wttr.in/"
 alias mytime="node ~/personalDev/my-scripts/get-time.js"
-alias dockerSetup="docker-machine start default && eval \"$(docker-machine env default)\""
+alias dockerSetup="docker-machine start default && eval \"\$(docker-machine env default)\""
