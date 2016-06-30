@@ -21,7 +21,7 @@ vnoremap // y/<C-R>"<CR>
 " clear search highlighting, use space bar -> l
 nnoremap <silent> <leader>l :nohlsearch<CR><C-l>
 
-" Set swap files to go in a certain directory
+" Set swap files to go in their own directory
 set backupdir=~/.vim/.backup
 set directory=~/.vim/.backup
 
