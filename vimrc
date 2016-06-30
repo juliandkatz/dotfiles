@@ -21,6 +21,10 @@ vnoremap // y/<C-R>"<CR>
 " clear search highlighting, use space bar -> l
 nnoremap <silent> <leader>l :nohlsearch<CR><C-l>
 
+" Set swap files to go in a certain directory
+set backupdir=~/.vim/.backup
+set directory=~/.vim/.backup
+
 " Some settings to enable the theme:
 set number        " Show line numbers
 set background=dark
