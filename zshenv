@@ -6,7 +6,3 @@ export AWS_DEFAULT_PROFILE=myaetna-aws-labs-jkatz
 
 # enable rbenv, shims and autocompletion.
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
-# configure shell for docker
-# docker-machine start default
-eval "$(docker-machine env default)"
