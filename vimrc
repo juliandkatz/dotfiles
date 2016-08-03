@@ -25,6 +25,10 @@ nnoremap <silent> <leader>l :nohlsearch<CR><C-l>
 set backupdir=~/.vim/.backup
 set directory=~/.vim/.backup
 
+" Set default fold method
+set foldmethod=indent
+set nofoldenable
+
 " Some settings to enable the theme:
 set number        " Show line numbers
 set background=dark
