@@ -6,11 +6,14 @@ set expandtab
 set colorcolumn=100
 let mapleader = "\<Space>"
 
-set ignorecase        " Makes search case-insensitive
-set smartcase         " Makes caps required
+" Misc
+set number            " Show line numbers
 
+" Search Settings
 set hlsearch          " highlight search matches
 set incsearch         " incremental searching
+set ignorecase        " Makes search case-insensitive
+set smartcase         " Makes caps required
 
 " Allows yank to pbcopy
 set clipboard=unnamed
@@ -30,9 +33,8 @@ set foldmethod=indent
 set nofoldenable
 
 " Some settings to enable the theme:
-set number        " Show line numbers
 set background=dark
-syntax enable     " Use syntax highlighting
+syntax enable          " Use syntax highlighting
 let g:solarized_termcolors = 256
 colorscheme solarized
 
@@ -70,7 +72,6 @@ NeoBundle 'marijnh/tern_for_vim', { 'build': { 'mac': 'npm install' } }
 NeoBundle "Valloric/YouCompleteMe", { 'build' : { 'mac' : './install.py --tern-completer' } }
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'jelera/vim-javascript-syntax'
-" NeoBundle 'pangloss/vim-polyglot'
 
 " Required:
 call neobundle#end()
