@@ -80,6 +80,7 @@ NeoBundle "Valloric/YouCompleteMe", { 'build' : { 'mac' : './install.py --tern-c
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'jelera/vim-javascript-syntax'
 NeoBundle 'mileszs/ack.vim'
+NeoBundle 'ctrlpvim/ctrlp.vim'
 
 " Required:
 call neobundle#end()
@@ -118,3 +119,8 @@ if executable('ag')
   let g:ackprg = 'ag --vimgrep'    " Use ag over ack
 endif
 nnoremap <Leader>f :Ack!<space>
+
+" CTRLP.VIM
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard'] " ignore files in .gitignore
