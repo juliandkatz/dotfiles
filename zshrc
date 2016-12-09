@@ -1,9 +1,9 @@
 # Pat
 # to your oh-my-zsh installation.
-export ZSH=~/.zsh
+export ZSH=$HOME/.zsh
 
 # Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
+# Look in $HOME/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="steeef"
@@ -46,25 +46,29 @@ COMPLETION_WAITING_DOTS="true"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Which plugins would you like to load? (plugins can be found in $HOME/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to $HOME/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 
 # User configuration
 
-export PATH="~/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:~/.rvm/bin"
+export PATH="$HOME/bin:$HOME/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:$HOME/.rvm/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
 
 # Setup for nvm
-export NVM_DIR=~/.nvm
+export NVM_DIR=$HOME/.nvm
   . $(brew --prefix nvm)/nvm.sh
 
 # Add npm auto-completion
-source <(npm completion)
+source <(npm completion) &
+
+# improve git autocomplete
+__git_files () { 
+    _wanted files expl 'local files' _files  }
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -80,18 +84,12 @@ source <(npm completion)
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
+# export SSH_KEY_PATH="$HOME/.ssh/dsa_id"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-alias mcweb="cd ~/dev/mc-web"
+# Aliases
+alias mcweb="cd $HOME/dev/mc-web"
+alias mcweb2="cd $HOME/dev/mc-web-2"
 alias karma_debug="karma start karma.conf.js --browsers=Chrome --single-run=false --debug"
 alias findn="find . -iname"
 alias weather="curl http://wttr.in/"
-alias mytime="node ~/personalDev/my-scripts/get-time.js"
+alias mytime="node $HOME/personalDev/my-scripts/get-time.js"
