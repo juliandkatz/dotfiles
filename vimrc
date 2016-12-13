@@ -13,6 +13,7 @@ set linebreak         " Break line on whole word
 set ttyfast           " Improves drawing of screen when scrolling
 set hidden            " Changes buffer behavior to hide rather than overrite
 set history=100       " Lengthens vim history
+set scrolloff=10      " Can't scroll within 10 lines of top of window
 
 " SEARCH
 set hlsearch          " highlight search matches
@@ -113,6 +114,9 @@ let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.DS_Store$']
 nnoremap <leader>n :NERDTreeFind<cr>
 nnoremap <leader>a :NERDTreeToggle<cr>
+
+" YOUCOMPLETEME
+let g:ycm_autoclose_preview_window_after_insertion = 1
 
 " ACK.VIM
 if executable('ag')
