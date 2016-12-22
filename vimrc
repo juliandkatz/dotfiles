@@ -29,6 +29,7 @@ colorscheme solarized
 
 " Mouse support
 set mouse=a
+set ttymouse=xterm2
 
 " Allows yank to pbcopy
 set clipboard=unnamed
