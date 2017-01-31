@@ -2,6 +2,7 @@
 [user]
 # Please adapt and uncomment the following lines:
 	name = Julian Katz
+	email = juliankatz1991@gmail.com
 
 [core]
 	editor = vim
@@ -11,3 +12,4 @@
 	conflictstyle = diff3
 [mergetool]
 	prompt = false
+	keepBackup = false
