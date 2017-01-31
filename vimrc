@@ -14,6 +14,7 @@ set ttyfast           " Improves drawing of screen when scrolling
 set hidden            " Changes buffer behavior to hide rather than overrite
 set history=100       " Lengthens vim history
 set scrolloff=10      " Can't scroll within 10 lines of top of window
+set rnu               " Use relative line numbers
 
 " SEARCH
 set hlsearch          " highlight search matches
@@ -80,9 +81,11 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'marijnh/tern_for_vim', { 'build': { 'mac': 'npm install' } }
 NeoBundle "Valloric/YouCompleteMe", { 'build' : { 'mac' : './install.py --tern-completer' } }
 NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'jelera/vim-javascript-syntax'
+NeoBundle 'mxw/vim-jsx'
+" NeoBundle 'jelera/vim-javascript-syntax'
 NeoBundle 'mileszs/ack.vim'
 NeoBundle 'ctrlpvim/ctrlp.vim'
+NeoBundle 'ryanoasis/vim-devicons'
 
 " Required:
 call neobundle#end()
@@ -119,6 +122,9 @@ nnoremap <leader>a :NERDTreeToggle<cr>
 " YOUCOMPLETEME
 let g:ycm_autoclose_preview_window_after_insertion = 1
 
+" VIM-JSX
+let g:jsx_ext_required = 0
+
 " ACK.VIM
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'    " Use ag over ack
@@ -129,3 +135,10 @@ nnoremap <Leader>f :Ack!<space>
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard'] " ignore files in .gitignore
+
+" VIM-DEVICONS
+let g:webdevicons_enable=1
+let g:webdevicons_enable_nerdtree = 1
+let g:webdevicons_enable_airline_statusline = 1
+set encoding=utf8
+" set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Nerd\ Font\ Complete:h11
