@@ -8,3 +8,4 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 # AWS
 # set default aws profile
 export AWS_DEFAULT_PROFILE="soke"
+export AWS_PROFILE="soke"
