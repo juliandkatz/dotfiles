@@ -77,15 +77,21 @@ NeoBundle 'elzr/vim-json'
 NeoBundle 'easymotion/vim-easymotion' 
 NeoBundle 'christoomey/vim-tmux-navigator'
 NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'scrooloose/syntastic'
+" NeoBundle 'scrooloose/syntastic'
 NeoBundle 'marijnh/tern_for_vim', { 'build': { 'mac': 'npm install' } }
-NeoBundle "Valloric/YouCompleteMe", { 'build' : { 'mac' : './install.py --tern-completer' } }
-NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'mxw/vim-jsx'
+NeoBundle "Valloric/YouCompleteMe", { 'build' : { 'mac' : './install.sh --tern-completer' } }
 " NeoBundle 'jelera/vim-javascript-syntax'
 NeoBundle 'mileszs/ack.vim'
 NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'ryanoasis/vim-devicons'
+NeoBundle 'jiangmiao/auto-pairs'
+
+" JAVASCRIPT
+NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'mxw/vim-jsx'
+
+" RUBY
+NeoBundle 'tpope/vim-endwise'
 
 " Required:
 call neobundle#end()
@@ -103,6 +109,7 @@ NeoBundleCheck
 
 " SYNTASTIC
 let g:syntastic_javascript_checkers = ['standard']
+let g:syntastic_javascript_standard_args = '--parser babel-eslint'
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*

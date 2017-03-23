@@ -61,7 +61,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Setup for nvm
 export NVM_DIR=$HOME/.nvm
-  . $(brew --prefix nvm)/nvm.sh
+source ~/.nvm/nvm.sh
 
 # Add npm auto-completion
 source <(npm completion) &
