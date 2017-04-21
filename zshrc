@@ -70,6 +70,9 @@ source <(npm completion) &
 __git_files () { 
     _wanted files expl 'local files' _files  }
 
+# Set command line to vi mode
+set -o vi
+
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
