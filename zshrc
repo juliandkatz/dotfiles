@@ -1,6 +1,6 @@
 # Pat
 # to your oh-my-zsh installation.
-export ZSH=$HOME/.zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in $HOME/.oh-my-zsh/themes/
@@ -54,14 +54,14 @@ plugins=(git)
 
 # User configuration
 
-export PATH="$HOME/bin:$HOME/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:$HOME/.rvm/bin"
+export PATH="$HOME/bin:$HOME/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:$HOME/.rvm/bin:$HOME/.vim/bundle/vim-superman/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
 
 # Setup for nvm
 export NVM_DIR=$HOME/.nvm
-source ~/.nvm/nvm.sh
+. "/usr/local/opt/nvm/nvm.sh"
 
 # Add npm auto-completion
 source <(npm completion) &
@@ -96,3 +96,4 @@ alias karma_debug="karma start karma.conf.js --browsers=Chrome --single-run=fals
 alias findn="find . -iname"
 alias weather="curl http://wttr.in/"
 alias mytime="node $HOME/personalDev/my-scripts/get-time.js"
+alias man="vman"

@@ -85,6 +85,7 @@ NeoBundle 'mileszs/ack.vim'
 NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'ryanoasis/vim-devicons'
 NeoBundle 'jiangmiao/auto-pairs'
+NeoBundle 'jez/vim-superman'
 
 " JAVASCRIPT
 NeoBundle 'pangloss/vim-javascript'
