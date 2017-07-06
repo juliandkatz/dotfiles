@@ -49,6 +49,9 @@ set directory=~/.vim/.backup
 set foldmethod=indent
 set nofoldenable
 
+" Make yank/paste more like clipboard
+xnoremap p pgvy
+
 
 " ----------------------------------------
 " PLUGINS
