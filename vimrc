@@ -94,6 +94,16 @@ NeoBundle 'mxw/vim-jsx'
 " RUBY
 NeoBundle 'tpope/vim-endwise'
 
+" PYTHON
+NeoBundle 'tmhedberg/SimpylFold'
+" NeoBundle 'hdima/python-syntax'
+
+" MARKDOWN
+NeoBundle 'suan/vim-instant-markdown'
+
+" YAML
+" NeoBundle 'avakhov/vim-yaml'
+
 " Required:
 call neobundle#end()
 
