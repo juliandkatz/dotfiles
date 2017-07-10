@@ -77,6 +77,7 @@ NeoBundle 'elzr/vim-json'
 NeoBundle 'easymotion/vim-easymotion' 
 NeoBundle 'christoomey/vim-tmux-navigator'
 NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'jistr/vim-nerdtree-tabs'
 " NeoBundle 'scrooloose/syntastic'
 NeoBundle 'marijnh/tern_for_vim', { 'build': { 'mac': 'npm install' } }
 NeoBundle "Valloric/YouCompleteMe", { 'build' : { 'mac' : './install.sh --tern-completer' } }
@@ -102,6 +103,7 @@ NeoBundle 'suan/vim-instant-markdown'
 
 " YAML
 " NeoBundle 'avakhov/vim-yaml'
+NeoBundle 'chase/vim-ansible-yaml'
 
 " Required:
 call neobundle#end()
@@ -121,7 +123,7 @@ NeoBundleCheck
 let g:syntastic_javascript_checkers = ['standard']
 let g:syntastic_javascript_standard_args = '--parser babel-eslint'
 set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
@@ -135,6 +137,7 @@ let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.DS_Store$']
 nnoremap <leader>n :NERDTreeFind<cr>
 nnoremap <leader>a :NERDTreeToggle<cr>
+let g:nerdtree_tabs_open_on_console_startup=1
 
 " YOUCOMPLETEME
 let g:ycm_autoclose_preview_window_after_insertion = 1
