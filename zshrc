@@ -73,6 +73,11 @@ __git_files () {
 # Set command line to vi mode
 set -o vi
 
+# setup stack
+export AWS_PROFILE=dev_deployer
+export STACK_HOME=$HOME/dev/stack
+source $STACK_HOME/bin/stack.env
+
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
