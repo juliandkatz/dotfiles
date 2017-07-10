@@ -49,6 +49,9 @@ set directory=~/.vim/.backup
 set foldmethod=indent
 set nofoldenable
 
+" Make yank/paste more like clipboard
+xnoremap p pgvy
+
 
 " ----------------------------------------
 " PLUGINS
@@ -86,6 +89,7 @@ NeoBundle 'mileszs/ack.vim'
 NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'ryanoasis/vim-devicons'
 NeoBundle 'jiangmiao/auto-pairs'
+NeoBundle 'jez/vim-superman'
 
 " JAVASCRIPT
 NeoBundle 'pangloss/vim-javascript'
