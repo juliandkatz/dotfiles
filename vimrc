@@ -3,6 +3,8 @@
 " ----------------------------------------
 let mapleader = "\<Space>"
 
+filetype plugin indent on
+
 " MISC
 set number            " Show line numbers
 set expandtab         " Use spaces instead of tabs
@@ -16,6 +18,8 @@ set hidden            " Changes buffer behavior to hide rather than overrite
 set history=100       " Lengthens vim history
 set scrolloff=10      " Can't scroll within 10 lines of top of window
 set rnu               " Use relative line numbers
+
+set laststatus=2
 
 " SEARCH
 set hlsearch          " highlight search matches
@@ -91,6 +95,7 @@ NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'ryanoasis/vim-devicons'
 NeoBundle 'jiangmiao/auto-pairs'
 NeoBundle 'jez/vim-superman'
+NeoBundle 'itchyny/lightline.vim'
 
 " JAVASCRIPT
 NeoBundle 'pangloss/vim-javascript'
@@ -101,7 +106,7 @@ NeoBundle 'tpope/vim-endwise'
 
 " PYTHON
 NeoBundle 'tmhedberg/SimpylFold'
-NeoBundle 'hdima/python-syntax'
+" NeoBundle 'hdima/python-syntax'
 
 " MARKDOWN
 NeoBundle 'suan/vim-instant-markdown'
@@ -168,3 +173,7 @@ let g:webdevicons_enable_nerdtree = 1
 let g:webdevicons_enable_airline_statusline = 1
 set encoding=utf8
 " set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Nerd\ Font\ Complete:h11
+
+" LIGHTLINE
+let g:lightline = { 'colorscheme': 'wombat' }
+set noshowmode    " Remove the normal status line
