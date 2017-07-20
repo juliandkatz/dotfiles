@@ -5,7 +5,6 @@
 export PATH="$HOME/bin:$HOME/.rbenv/shims:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:$HOME/.rvm/bin:$HOME/.vim/bundle/vim-superman/bin"
 export PATH="/usr/local/bin:$PATH" # for homebrew
 export PATH=/usr/local/share/python:$PATH
-echo "PATH SET"
 
 
 ###########################################
