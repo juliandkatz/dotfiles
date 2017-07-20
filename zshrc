@@ -54,9 +54,6 @@ plugins=(git)
 
 # User configuration
 
-export PATH="$HOME/bin:$HOME/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:$HOME/.rvm/bin:$HOME/.vim/bundle/vim-superman/bin"
-# export MANPATH="/usr/local/man:$MANPATH"
-
 source $ZSH/oh-my-zsh.sh
 
 # Setup for nvm
