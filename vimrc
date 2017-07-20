@@ -143,6 +143,7 @@ let NERDTreeIgnore=['\.DS_Store$']
 nnoremap <leader>n :NERDTreeFind<cr>
 nnoremap <leader>a :NERDTreeToggle<cr>
 let g:nerdtree_tabs_open_on_console_startup=1
+let g:nerdtree_tabs_focus_on_files=1
 
 " YOUCOMPLETEME
 let g:ycm_autoclose_preview_window_after_insertion = 1
