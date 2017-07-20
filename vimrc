@@ -6,7 +6,8 @@ let mapleader = "\<Space>"
 " MISC
 set number            " Show line numbers
 set expandtab         " Use spaces instead of tabs
-set tabstop=2         " Set tab to two spaces
+set tabstop=2         " Set literal tab character to two spaces
+set softtabstop=2     " Fixes some weird behavior
 set shiftwidth=2      " Number of auto-indent spaces
 set colorcolumn=100   " Add column n characters from left
 set linebreak         " Break line on whole word
@@ -100,7 +101,7 @@ NeoBundle 'tpope/vim-endwise'
 
 " PYTHON
 NeoBundle 'tmhedberg/SimpylFold'
-" NeoBundle 'hdima/python-syntax'
+NeoBundle 'hdima/python-syntax'
 
 " MARKDOWN
 NeoBundle 'suan/vim-instant-markdown'
