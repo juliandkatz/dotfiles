@@ -56,24 +56,12 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-# Setup for nvm
-export NVM_DIR=$HOME/.nvm
-. "/usr/local/opt/nvm/nvm.sh"
-
-# Add npm auto-completion
-source <(npm completion) &
-
 # improve git autocomplete
 __git_files () { 
     _wanted files expl 'local files' _files  }
 
 # Set command line to vi mode
 set -o vi
-
-# setup stack
-export AWS_PROFILE=dev_deployer
-export STACK_HOME=$HOME/dev/stack
-source $STACK_HOME/bin/stack.env
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
