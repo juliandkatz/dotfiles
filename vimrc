@@ -86,7 +86,7 @@ NeoBundle 'easymotion/vim-easymotion'
 NeoBundle 'christoomey/vim-tmux-navigator'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'jistr/vim-nerdtree-tabs'
-" NeoBundle 'scrooloose/syntastic'
+NeoBundle 'scrooloose/syntastic'
 NeoBundle 'marijnh/tern_for_vim', { 'build': { 'mac': 'npm install' } }
 NeoBundle "Valloric/YouCompleteMe", { 'build' : { 'mac' : './install.sh --tern-completer' } }
 " NeoBundle 'jelera/vim-javascript-syntax'
