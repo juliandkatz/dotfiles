@@ -87,3 +87,26 @@ alias findn="find . -iname"
 alias weather="curl http://wttr.in/"
 alias mytime="node $HOME/personalDev/my-scripts/get-time.js"
 alias man="vman"
+
+###########################################
+######   LANGUAGE SPECIFIC OPTIONS   ######
+###########################################
+
+###### RUBY ######
+# set default ruby version.
+export RBENV_VERSION=2.2.2
+
+# enable rbenv, shims and autocompletion.
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+###### NODE ######
+# Setup for nvm
+export NVM_DIR=$HOME/.nvm
+. "/usr/local/opt/nvm/nvm.sh"
+
+# Add npm auto-completion
+source <(npm completion) &
+
+###### PYTHON ######
+eval "$(pyenv init -)"
+echo "PATH : $PATH"
