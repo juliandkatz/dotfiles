@@ -89,6 +89,14 @@ alias mytime="node $HOME/personalDev/my-scripts/get-time.js"
 alias man="vman"
 
 ###########################################
+##########   CUSTOM FUNCTIONS   ###########
+###########################################
+
+function help(){
+    bash -c "help $@"
+}
+
+###########################################
 ######   LANGUAGE SPECIFIC OPTIONS   ######
 ###########################################
 
@@ -109,4 +117,3 @@ source <(npm completion) &
 
 ###### PYTHON ######
 eval "$(pyenv init -)"
-echo "PATH : $PATH"
