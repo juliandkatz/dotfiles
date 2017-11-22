@@ -87,25 +87,20 @@ alias findn="find . -iname"
 alias weather="curl http://wttr.in/"
 alias mytime="node $HOME/personalDev/my-scripts/get-time.js"
 alias man="vman"
+alias help="run-help"
+alias cb="git rev-parse --abbrev-ref HEAD"
 
 ###########################################
-##########   CUSTOM FUNCTIONS   ###########
+######   LANGUAGE AND PATH OPTIONS   ######
 ###########################################
 
-function help(){
-    bash -c "help $@"
-}
+export PATH="$HOME/bin:$HOME/.rbenv/shims:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:$HOME/.rvm/bin:$HOME/.vim/bundle/vim-superman/bin"
+export PATH="/usr/local/bin:$PATH" # for homebrew
 
-###########################################
-######   LANGUAGE SPECIFIC OPTIONS   ######
-###########################################
-
-###### RUBY ######
-# set default ruby version.
-export RBENV_VERSION=2.2.2
-
-# enable rbenv, shims and autocompletion.
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+##### PYTHON/PYENV #####
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 
 ###### NODE ######
 # Setup for nvm
@@ -115,5 +110,7 @@ export NVM_DIR=$HOME/.nvm
 # Add npm auto-completion
 source <(npm completion) &
 
-###### PYTHON ######
-eval "$(pyenv init -)"
+###### STACK TOOL #####
+export AWS_PROFILE=dev_deployer
+export STACK_HOME=$HOME/dev/stack
+source $STACK_HOME/bin/stack.env

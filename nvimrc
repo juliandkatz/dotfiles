@@ -18,27 +18,18 @@ set hidden            " Changes buffer behavior to hide rather than overrite
 set history=100       " Lengthens vim history
 set scrolloff=10      " Can't scroll within 10 lines of top of window
 set rnu               " Use relative line numbers
+set mouse=a           " Mouse support
+set clipboard=unnamed " Allows yank to pbcopy
 
 set laststatus=2
+
+set termguicolors     " Something to enable colors later on
 
 " SEARCH
 set hlsearch          " highlight search matches
 set incsearch         " incremental searching
 set ignorecase        " Makes search case-insensitive
 set smartcase         " Makes caps required
-
-" THEME SETTINGS
-set background=dark
-syntax enable          " Use syntax highlighting
-let g:solarized_termcolors = 256
-colorscheme solarized
-
-" Mouse support
-set mouse=a
-set ttymouse=xterm2
-
-" Allows yank to pbcopy
-set clipboard=unnamed
 
 " Creates command for search for current visually selected text
 vnoremap // y/<C-R>"<CR>
@@ -47,8 +38,8 @@ vnoremap // y/<C-R>"<CR>
 nnoremap <silent> <leader>l :nohlsearch<CR><C-l>
 
 " Set swap files to go in their own directory
-set backupdir=~/.vim/.backup
-set directory=~/.vim/.backup
+" set backupdir=~/.vim/.backup
+" set directory=~/.vim/.backup
 
 " Set default fold method
 set foldmethod=indent
@@ -57,103 +48,90 @@ set nofoldenable
 " Make yank/paste more like clipboard
 xnoremap p pgvy
 
-
 " ----------------------------------------
 " PLUGINS
 " ----------------------------------------
 
-if has('vim_starting')
- if &compatible
-   " Be iMproved
-   set nocompatible
- endif
+" BEGIN PLUGIN DECLARATIONS
+call plug#begin('~/.config/nvim/plugged')
 
- " Required:
- set runtimepath+=~/.vim/bundle/neobundle.vim/
-endif
+Plug 'iCyMind/NeoSolarized'
+Plug 'tpope/vim-surround'
+Plug 'tomtom/tcomment_vim'
+Plug 'elzr/vim-json'
+Plug 'easymotion/vim-easymotion' 
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'scrooloose/nerdtree'
+Plug 'jistr/vim-nerdtree-tabs'
+Plug 'w0rp/ale'
+" Plug 'scrooloose/syntastic' "There are better ones out there for neovim
+" Plug 'marijnh/tern_for_vim', { 'build': { 'mac': 'npm install' } }
+" Plug 'Valloric/YouCompleteMe', { 'build' : { 'mac' : './install.sh --tern-completer' } } "There are better ones for neovim
+" Plug 'jelera/vim-javascript-syntax'
 
-" Required:
-call neobundle#begin(expand('~/.vim/bundle'))
-
-" @NeoBundle Configuration
-
-NeoBundleFetch "Shougo/neobundle.vim"
-
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'tomtom/tcomment_vim'
-NeoBundle 'elzr/vim-json'
-NeoBundle 'easymotion/vim-easymotion' 
-NeoBundle 'christoomey/vim-tmux-navigator'
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'jistr/vim-nerdtree-tabs'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'marijnh/tern_for_vim', { 'build': { 'mac': 'npm install' } }
-NeoBundle "Valloric/YouCompleteMe", { 'build' : { 'mac' : './install.sh --tern-completer' } }
-" NeoBundle 'jelera/vim-javascript-syntax'
-NeoBundle 'mileszs/ack.vim'
-NeoBundle 'ctrlpvim/ctrlp.vim'
-NeoBundle 'ryanoasis/vim-devicons'
-NeoBundle 'jiangmiao/auto-pairs'
-NeoBundle 'jez/vim-superman'
-NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'djoshea/vim-autoread'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'mileszs/ack.vim'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'ryanoasis/vim-devicons'
+Plug 'jiangmiao/auto-pairs'
+Plug 'jez/vim-superman'
+Plug 'itchyny/lightline.vim'
+Plug 'djoshea/vim-autoread'
 
 " JAVASCRIPT
-NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'mxw/vim-jsx'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 
 " RUBY
-NeoBundle 'tpope/vim-endwise'
+Plug 'tpope/vim-endwise'
 
 " PYTHON
-NeoBundle 'tmhedberg/SimpylFold'
-" NeoBundle 'hdima/python-syntax'
+Plug 'tmhedberg/SimpylFold'
+" Plug 'hdima/python-syntax'
 
 " MARKDOWN
-NeoBundle 'suan/vim-instant-markdown'
+Plug 'suan/vim-instant-markdown'
 
 " YAML
-" NeoBundle 'avakhov/vim-yaml'
-NeoBundle 'chase/vim-ansible-yaml'
+" Plug 'avakhov/vim-yaml'
+Plug 'chase/vim-ansible-yaml'
 
-" Required:
-call neobundle#end()
+" END PLUGIN DECLARATIONS
+call plug#end()
 
-" Required:
-filetype plugin indent on
-
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
-NeoBundleCheck
+" THEME SETTINGS
+set termguicolors
+colorscheme NeoSolarized
+set background=dark
 
 " ----------------------------------------
 " PLUGIN SPECIFIC SETTINGS
 " ----------------------------------------
 
-" SYNTASTIC
-let g:syntastic_javascript_checkers = ['standard']
-" let g:syntastic_javascript_standard_args = '--parser babel-eslint'
-" set statusline+=%#warningmsg#
-" " set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-"
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_wq = 0
-"
-" let g:syntastic_html_tidy_exec = 'tidy5'
+call deoplete#enable()
+let g:deoplete#enable_at_startup=1
+" let g:python_host_prog = '/Users/A780976/.pyenv/versions/neovim2/bin/python'
+let g:python3_host_prog = '/Users/A780976/.pyenv/versions/neovim3/bin/python'
 
 " NERDTREE
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.DS_Store$']
 nnoremap <leader>n :NERDTreeFind<cr>
 nnoremap <leader>a :NERDTreeToggle<cr>
-" let g:nerdtree_tabs_open_on_console_startup=1
 let g:nerdtree_tabs_focus_on_files=1
 let g:NERDTreeWinSize=40
 
-" YOUCOMPLETEME
-let g:ycm_autoclose_preview_window_after_insertion = 1
+" ALE
+let g:ale_linters = {
+\   'javascript': ['standard']
+\}
+" let g:ale_javascript_eslint_executable = '/Users/A780976/.nvm/versions/node/v8.9.1/bin/standard'
+" let g:ale_javascript_standard_use_global = 1
+" let g:ale_sign_column_always = 1
+" let g:ale_fix_on_save = 1
+
+" autocmd bufwritepost *.js silent !standard --fix %
+" set autoread
 
 " VIM-JSX
 let g:jsx_ext_required = 0
@@ -174,7 +152,6 @@ let g:webdevicons_enable=1
 let g:webdevicons_enable_nerdtree = 1
 let g:webdevicons_enable_airline_statusline = 1
 set encoding=utf8
-" set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Nerd\ Font\ Complete:h11
 
 " LIGHTLINE
 let g:lightline = { 'colorscheme': 'wombat' }
