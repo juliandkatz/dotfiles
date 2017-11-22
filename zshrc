@@ -89,6 +89,7 @@ alias mytime="node $HOME/personalDev/my-scripts/get-time.js"
 alias man="vman"
 alias help="run-help"
 alias cb="git rev-parse --abbrev-ref HEAD"
+alias vim="nvim"
 
 ###########################################
 ######   LANGUAGE AND PATH OPTIONS   ######
