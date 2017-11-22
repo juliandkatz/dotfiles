@@ -108,12 +108,7 @@ set background=dark
 " PLUGIN SPECIFIC SETTINGS
 " ----------------------------------------
 
-call deoplete#enable()
-let g:deoplete#enable_at_startup=1
-" let g:python_host_prog = '/Users/A780976/.pyenv/versions/neovim2/bin/python'
-let g:python3_host_prog = '/Users/A780976/.pyenv/versions/neovim3/bin/python'
-
-" NERDTREE
+" -------- NERDTREE --------
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.DS_Store$']
 nnoremap <leader>n :NERDTreeFind<cr>
@@ -121,38 +116,50 @@ nnoremap <leader>a :NERDTreeToggle<cr>
 let g:nerdtree_tabs_focus_on_files=1
 let g:NERDTreeWinSize=40
 
-" ALE
+" -------- DEOPLETE --------
+call deoplete#enable()
+let g:deoplete#enable_at_startup=1
+let g:python3_host_prog = '/Users/A780976/.pyenv/versions/neovim3/bin/python'
+
+" Changes autocomplete button to TAB
+inoremap <silent><expr> <TAB>
+\ pumvisible() ? "\<C-n>" :
+\ <SID>check_back_space() ? "\<TAB>" :
+\ deoplete#mappings#manual_complete()
+function! s:check_back_space() abort "{{{
+let col = col('.') - 1
+return !col || getline('.')[col - 1]  =~ '\s'
+endfunction"}}}
+
+" -------- ALE --------
 let g:ale_linters = {
 \   'javascript': ['standard']
 \}
-" let g:ale_javascript_eslint_executable = '/Users/A780976/.nvm/versions/node/v8.9.1/bin/standard'
-" let g:ale_javascript_standard_use_global = 1
-" let g:ale_sign_column_always = 1
 " let g:ale_fix_on_save = 1
 
 " autocmd bufwritepost *.js silent !standard --fix %
 " set autoread
 
-" VIM-JSX
+" -------- VIM-JSX --------
 let g:jsx_ext_required = 0
 
-" ACK.VIM
+" -------- ACK.VIM --------
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'    " Use ag over ack
 endif
 nnoremap <Leader>f :Ack!<space>
 
-" CTRLP.VIM
+" -------- CTRLP.VIM --------
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard'] " ignore files in .gitignore
 
-" VIM-DEVICONS
+" -------- VIM-DEVICONS --------
 let g:webdevicons_enable=1
 let g:webdevicons_enable_nerdtree = 1
 let g:webdevicons_enable_airline_statusline = 1
 set encoding=utf8
 
-" LIGHTLINE
+" -------- LIGHTLINE --------
 let g:lightline = { 'colorscheme': 'wombat' }
 set noshowmode    " Remove the normal status line
