@@ -74,7 +74,7 @@ Plug 'mileszs/ack.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'jiangmiao/auto-pairs'
-Plug 'jez/vim-superman'
+Plug 'nhooyr/neoman.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'djoshea/vim-autoread'
 

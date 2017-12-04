@@ -86,7 +86,6 @@ alias karma_debug="karma start karma.conf.js --browsers=Chrome --single-run=fals
 alias findn="find . -iname"
 alias weather="curl http://wttr.in/"
 alias mytime="node $HOME/personalDev/my-scripts/get-time.js"
-alias man="vman"
 alias help="run-help"
 alias cb="git rev-parse --abbrev-ref HEAD"
 alias vim="nvim"
@@ -95,7 +94,7 @@ alias vim="nvim"
 ######   LANGUAGE AND PATH OPTIONS   ######
 ###########################################
 
-export PATH="$HOME/bin:$HOME/.rbenv/shims:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:$HOME/.rvm/bin:$HOME/.vim/bundle/vim-superman/bin"
+export PATH="$HOME/bin:$HOME/.rbenv/shims:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:$HOME/.rvm/bin:$HOME/.config/nvim/plugged/vim-superman/bin"
 export PATH="/usr/local/bin:$PATH" # for homebrew
 
 ##### PYTHON/PYENV #####
@@ -115,3 +114,7 @@ source <(npm completion) &
 export AWS_PROFILE=dev_deployer
 export STACK_HOME=$HOME/dev/stack
 source $STACK_HOME/bin/stack.env
+
+###### NEOVIM MAN PAGES ######
+export MANPAGER="nvim -c 'set ft=neoman' -"
+
