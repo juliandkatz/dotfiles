@@ -64,11 +64,6 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'w0rp/ale'
-" Plug 'scrooloose/syntastic' "There are better ones out there for neovim
-" Plug 'marijnh/tern_for_vim', { 'build': { 'mac': 'npm install' } }
-" Plug 'Valloric/YouCompleteMe', { 'build' : { 'mac' : './install.sh --tern-completer' } } "There are better ones for neovim
-" Plug 'jelera/vim-javascript-syntax'
-
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'mileszs/ack.vim'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -77,6 +72,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'nhooyr/neoman.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'djoshea/vim-autoread'
+Plug 'tpope/vim-obsession'
 
 " JAVASCRIPT
 Plug 'pangloss/vim-javascript'
@@ -87,7 +83,7 @@ Plug 'tpope/vim-endwise'
 
 " PYTHON
 Plug 'tmhedberg/SimpylFold'
-" Plug 'hdima/python-syntax'
+Plug 'hdima/python-syntax'
 
 " MARKDOWN
 Plug 'suan/vim-instant-markdown'
@@ -169,3 +165,6 @@ set encoding=utf8
 " -------- LIGHTLINE --------
 let g:lightline = { 'colorscheme': 'wombat' }
 set noshowmode    " Remove the normal status line
+
+" -------- PYTHON-SYNTAX --------
+let python_highlight_all = 1
