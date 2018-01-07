@@ -57,6 +57,7 @@ call plug#begin('~/.config/nvim/plugged')
 
 Plug 'iCyMind/NeoSolarized'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
 Plug 'tomtom/tcomment_vim'
 Plug 'elzr/vim-json'
 Plug 'easymotion/vim-easymotion' 
@@ -135,7 +136,7 @@ endfunction"}}}
 " let g:ale_lint_on_enter = 1
 
 let g:ale_fixers = {
-\   'javascript': ['standard']
+\   'javascript': ['standard', 'eslint']
 \}
 let g:ale_fix_on_save = 1
 
