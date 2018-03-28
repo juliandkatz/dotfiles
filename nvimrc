@@ -129,16 +129,17 @@ return !col || getline('.')[col - 1]  =~ '\s'
 endfunction"}}}
 
 " -------- ALE --------
-" let g:ale_linters = {
-" \   'javascript': ['standard']
-" \}
+let g:ale_linters = {
+\   'javascript': ['standard'],
+\   'python': ['pylint']
+\}
 " let g:ale_lint_on_text_changed = 1
 " let g:ale_lint_on_enter = 1
-
-let g:ale_fixers = {
-\   'javascript': ['standard', 'eslint']
-\}
-let g:ale_fix_on_save = 1
+"
+" let g:ale_fixers = {
+" \   'javascript': ['standard', 'eslint']
+" \}
+" let g:ale_fix_on_save = 1
 
 " autocmd bufwritepost *.js silent !standard --fix %
 " set autoread
@@ -168,4 +169,5 @@ let g:lightline = { 'colorscheme': 'wombat' }
 set noshowmode    " Remove the normal status line
 
 " -------- PYTHON-SYNTAX --------
-let python_highlight_all = 1
+let g:python_highlight_all = 1
+let g:python_version_2 = 1
