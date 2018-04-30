@@ -171,3 +171,6 @@ set noshowmode    " Remove the normal status line
 " -------- PYTHON-SYNTAX --------
 let g:python_highlight_all = 1
 let g:python_version_2 = 1
+
+" -------- VIM-MARKDOWN --------
+let g:vim_markdown_follow_anchor = 1
