@@ -10,3 +10,4 @@ flux
 postman
 the unarchiver
 vlc
+flycut
