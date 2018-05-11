@@ -70,8 +70,8 @@ eval "$(pyenv init -)"
 
 ###### NODE ######
 # Setup for nvm
-# export NVM_DIR=$HOME/.nvm
-# . "/usr/local/opt/nvm/nvm.sh"
+export NVM_DIR=$HOME/.nvm
+. "/usr/local/opt/nvm/nvm.sh"
 
 # Add npm auto-completion
 # source <(npm completion)
