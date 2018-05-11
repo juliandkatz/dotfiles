@@ -1,0 +1,12 @@
+ag - silver searcher
+docker for mac
+bettertouchtool
+cloudapp - juliankatz1991@gmail.com
+tunnelblick
+alfred
+spotify
+dash
+flux
+postman
+the unarchiver
+vlc
