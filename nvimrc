@@ -116,7 +116,7 @@ let g:NERDTreeWinSize=40
 " -------- DEOPLETE --------
 call deoplete#enable()
 let g:deoplete#enable_at_startup=1
-let g:python3_host_prog = '/Users/A780976/.pyenv/versions/neovim3/bin/python'
+let g:python3_host_prog = '/Users/juliankatz/.pyenv/versions/neovim3/bin/python'
 
 " Changes autocomplete button to TAB
 inoremap <silent><expr> <TAB>
