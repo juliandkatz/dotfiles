@@ -51,9 +51,9 @@ alias glog="git log --graph --abbrev-commit --decorate --date=relative --format=
 ######   LANGUAGE AND PATH OPTIONS   ######
 ###########################################
 
-export PATH="$HOME/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:$HOME/.rvm/bin:$HOME/.config/nvim/plugged/vim-superman/bin"
+#######OLD AND BROKEN# export PATH="$HOME/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:$HOME/.rvm/bin:$HOME/.config/nvim/plugged/vim-superman/bin"
 export PATH="/usr/local/bin:$PATH" # for homebrew
-
+#
 ##### PYTHON/PYENV #####
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
@@ -68,13 +68,6 @@ export NVM_DIR=$HOME/.nvm
 # source <(npm completion)
 
 ###### NEOVIM MAN PAGES ######
-#export MANPAGER="nvim -c 'set ft=neoman' -"
-
-[[ -s "/Users/A780976/.gvm/scripts/gvm" ]] && source "/Users/A780976/.gvm/scripts/gvm"
-
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[[ -f /Users/A780976/.nvm/versions/node/v6.10.3/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/A780976/.nvm/versions/node/v6.10.3/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[[ -f /Users/A780976/.nvm/versions/node/v6.10.3/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/A780976/.nvm/versions/node/v6.10.3/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
+export MANPAGER="nvim -c 'set ft=neoman' -"
+#
+# [[ -s "/Users/A780976/.gvm/scripts/gvm" ]] && source "/Users/A780976/.gvm/scripts/gvm"
