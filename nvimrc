@@ -32,7 +32,7 @@ set ignorecase        " Makes search case-insensitive
 set smartcase         " Makes caps required
 
 " Creates command for search for current visually selected text
-vnoremap // y/<C-R>"<CR>
+" vnoremap // y/<C-R>"<CR>  THIS IS NO LONGER WORKING
 
 " clear search highlighting, use space bar -> l
 nnoremap <silent> <leader>l :nohlsearch<CR><C-l>
