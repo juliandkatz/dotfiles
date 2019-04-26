@@ -79,6 +79,9 @@ Plug 'tpope/vim-obsession'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 
+" TYPESCRIPT
+Plug 'leafgarland/typescript-vim'
+
 " RUBY
 Plug 'tpope/vim-endwise'
 
@@ -139,7 +142,7 @@ let g:ale_linters = {
 " let g:ale_fixers = {
 " \   'javascript': ['standard', 'eslint']
 " \}
-" let g:ale_fix_on_save = 1
+let g:ale_fix_on_save = 1
 
 " autocmd bufwritepost *.js silent !standard --fix %
 " set autoread
