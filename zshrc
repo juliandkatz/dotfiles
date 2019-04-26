@@ -4,6 +4,7 @@ export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="steeef"
 HYPHEN_INSENSITIVE="true"
 COMPLETION_WAITING_DOTS="true"
+KEYTIMEOUT=1
 
 # Which plugins would you like to load? (plugins can be found in $HOME/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
