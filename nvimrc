@@ -20,10 +20,10 @@ set scrolloff=10      " Can't scroll within 10 lines of top of window
 set rnu               " Use relative line numbers
 set mouse=a           " Mouse support
 set clipboard=unnamed " Allows yank to pbcopy
+set timeoutlen=1000   " Faster key response
+set ttimeoutlen=0     " Faster key response
 
 set laststatus=2
-
-set termguicolors     " Something to enable colors later on
 
 " SEARCH
 set hlsearch          " highlight search matches
@@ -32,7 +32,7 @@ set ignorecase        " Makes search case-insensitive
 set smartcase         " Makes caps required
 
 " Creates command for search for current visually selected text
-" vnoremap // y/<C-R>"<CR>  THIS IS NO LONGER WORKING
+vnoremap // y/<C-R>"<CR>  THIS IS NO LONGER WORKING
 
 " clear search highlighting, use space bar -> l
 nnoremap <silent> <leader>l :nohlsearch<CR><C-l>
@@ -55,7 +55,7 @@ xnoremap p pgvy
 " BEGIN PLUGIN DECLARATIONS
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'iCyMind/NeoSolarized'
+Plug 'jacoborus/tender.vim' " THEME
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tomtom/tcomment_vim'
@@ -66,6 +66,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'w0rp/ale'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
 Plug 'mileszs/ack.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ryanoasis/vim-devicons'
@@ -74,6 +75,11 @@ Plug 'nhooyr/neoman.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'djoshea/vim-autoread'
 Plug 'tpope/vim-obsession'
+
+" GO
+Plug 'jnwhiteh/vim-golang'
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+" Plug 'AndrewRadev/splitjoin.vim' " This didn't seem to work correctly... why?
 
 " JAVASCRIPT
 Plug 'pangloss/vim-javascript'
@@ -100,9 +106,18 @@ Plug 'chase/vim-ansible-yaml'
 call plug#end()
 
 " THEME SETTINGS
-set termguicolors
-colorscheme NeoSolarized
 set background=dark
+
+if (has("termguicolors"))
+ set termguicolors
+endif
+
+" For Neovim 0.1.3 and 0.1.4
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+
+" Theme
+syntax enable
+colorscheme tender
 
 " ----------------------------------------
 " PLUGIN SPECIFIC SETTINGS
@@ -119,17 +134,21 @@ let g:NERDTreeWinSize=40
 " -------- DEOPLETE --------
 call deoplete#enable()
 let g:deoplete#enable_at_startup=1
-let g:python3_host_prog = '/Users/juliankatz/.pyenv/versions/neovim3/bin/python'
+" let g:python3_host_prog = '/Users/juliankatz/.pyenv/versions/neovim3/bin/python'
 
 " Changes autocomplete button to TAB
 inoremap <silent><expr> <TAB>
-\ pumvisible() ? "\<C-n>" :
-\ <SID>check_back_space() ? "\<TAB>" :
-\ deoplete#mappings#manual_complete()
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ deoplete#mappings#manual_complete()
 function! s:check_back_space() abort "{{{
-let col = col('.') - 1
-return !col || getline('.')[col - 1]  =~ '\s'
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
 endfunction"}}}
+
+" deoplete-go settings
+let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
+let g:deoplete#sources#go#sort_class = ['package', 'func', 'const', 'type', 'var']
 
 " -------- ALE --------
 let g:ale_linters = {
@@ -152,7 +171,7 @@ let g:jsx_ext_required = 0
 
 " -------- ACK.VIM --------
 if executable('ag')
-  let g:ackprg = 'ag --vimgrep'    " Use ag over ack
+  let g:ackprg = 'ag --vimgrep --path-to-ignore ~/.ignore'    " Use ag over ack
 endif
 nnoremap <Leader>f :Ack!<space>
 
@@ -177,3 +196,13 @@ let g:python_version_2 = 1
 
 " -------- VIM-MARKDOWN --------
 let g:vim_markdown_follow_anchor = 1
+
+" -------- VIM-GO --------
+let g:go_fmt_experimental = 1
+let g:go_fmt_command = "goimports"
+
+" Allows for vim-go to save the file when we run :GoBuild
+set autowrite
+
+" ----------- GOOGLE CONFIG -----------
+source /usr/local/google/home/juliankatz/.config/nvim/additionalConfig.vim
