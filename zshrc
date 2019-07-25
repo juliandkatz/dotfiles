@@ -60,5 +60,7 @@ export COLORTERM=truecolor
 # Google workstation config
 if [ "$(uname)" = "Linux" ]; then
   source $HOME/.zshrc-google
+else
+  source $HOME/.zshrc-personal
 fi
 
