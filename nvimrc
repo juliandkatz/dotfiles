@@ -48,6 +48,7 @@ set nofoldenable
 " Make yank/paste more like clipboard
 xnoremap p pgvy
 
+
 " ----------------------------------------
 " PLUGINS
 " ----------------------------------------
@@ -134,7 +135,9 @@ let g:NERDTreeWinSize=40
 " -------- DEOPLETE --------
 call deoplete#enable()
 let g:deoplete#enable_at_startup=1
-" let g:python3_host_prog = '/Users/juliankatz/.pyenv/versions/neovim3/bin/python'
+
+" Closes the suggestion popup when we leave insert mode (i.e. when we've chosen something)
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
 " Changes autocomplete button to TAB
 inoremap <silent><expr> <TAB>
@@ -155,16 +158,7 @@ let g:ale_linters = {
 \   'javascript': ['standard'],
 \   'python': ['pylint']
 \}
-" let g:ale_lint_on_text_changed = 1
-" let g:ale_lint_on_enter = 1
-"
-" let g:ale_fixers = {
-" \   'javascript': ['standard', 'eslint']
-" \}
 let g:ale_fix_on_save = 1
-
-" autocmd bufwritepost *.js silent !standard --fix %
-" set autoread
 
 " -------- VIM-JSX --------
 let g:jsx_ext_required = 0

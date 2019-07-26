@@ -9,12 +9,17 @@ antigen theme steeef
 ###########################
 
 antigen bundle git
-antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle vi-mode
+antigen bundle zdharma/fast-syntax-highlighting
 antigen bundle zsh-users/zsh-completions
 antigen bundle command-not-found
 
 antigen apply
+
+###### PLUGIN CONFIG ######
+
+# fix slow pasting with fast-syntax-highlight 
+zstyle ':bracketed-paste-magic' active-widgets '.self-*'
 
 #############################
 ######     ALIASES     ######
@@ -63,4 +68,3 @@ if [ "$(uname)" = "Linux" ]; then
 else
   source $HOME/.zshrc-personal
 fi
-
