@@ -10,7 +10,8 @@ antigen theme steeef
 
 antigen bundle git
 antigen bundle vi-mode
-antigen bundle zdharma/fast-syntax-highlighting
+# antigen bundle zdharma/fast-syntax-highlighting
+antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-completions
 # antigen bundle command-not-found # do I need this??
 
@@ -27,10 +28,14 @@ zstyle ':bracketed-paste-magic' active-widgets '.self-*'
 
 alias cb="git rev-parse --abbrev-ref HEAD"
 alias vim="nvim"
-alias k="kubectl"
 
 # Improved git log graph alias
 alias glog="git log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
+
+# variables for faster kubectl
+alias k="kubectl"
+export cms="config-management-system"
+export ks="kube-system"
 
 ##################################
 #####     GENERAL CONFIG     #####
@@ -60,6 +65,7 @@ export LANGUAGE="en_US.UTF-8"
 # Fix make target completion
 autoload -U compinit && compinit
 zstyle ':completion:*:*:make:*' tag-order 'targets'
+# zstyle ':completion:*:make:*:targets' call-command true
 
 export COLORTERM=truecolor
 
