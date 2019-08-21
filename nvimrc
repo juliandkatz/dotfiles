@@ -22,6 +22,7 @@ set mouse=a           " Mouse support
 set clipboard=unnamed " Allows yank to pbcopy
 set timeoutlen=1000   " Faster key response
 set ttimeoutlen=0     " Faster key response
+set cursorline        " Gently highlights line cursor is on
 
 set laststatus=2
 
@@ -32,7 +33,7 @@ set ignorecase        " Makes search case-insensitive
 set smartcase         " Makes caps required
 
 " Creates command for search for current visually selected text
-vnoremap // y/<C-R>"<CR>  THIS IS NO LONGER WORKING
+vnoremap // y/<C-R>"<CR>
 
 " clear search highlighting, use space bar -> l
 nnoremap <silent> <leader>l :nohlsearch<CR><C-l>
@@ -68,7 +69,8 @@ Plug 'jistr/vim-nerdtree-tabs'
 Plug 'w0rp/ale'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
-Plug 'mileszs/ack.vim'
+" Plug 'mileszs/ack.vim'
+Plug 'AndrewRadev/ack.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'jiangmiao/auto-pairs'
@@ -76,6 +78,7 @@ Plug 'nhooyr/neoman.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'djoshea/vim-autoread'
 Plug 'tpope/vim-obsession'
+" Plug 'ludovicchabant/vim-gutentags'
 
 " GO
 Plug 'jnwhiteh/vim-golang'
@@ -125,12 +128,20 @@ colorscheme tender
 " ----------------------------------------
 
 " -------- NERDTREE --------
-let NERDTreeShowHidden=1
+function OpenFind()
+  silent NERDTreeFind
+  silent NERDTreeTabsOpen
+  silent NERDTreeFocusToggle
+endfunction
+
 let NERDTreeIgnore=['\.DS_Store$']
-nnoremap <leader>n :NERDTreeFind<cr>
-nnoremap <leader>a :NERDTreeToggle<cr>
+
+nnoremap <leader>n :call OpenFind()<cr>
+nnoremap <leader>a :NERDTreeTabsToggle<cr>
+
 let g:nerdtree_tabs_focus_on_files=1
 let g:NERDTreeWinSize=40
+let NERDTreeShowHidden=1
 
 " -------- DEOPLETE --------
 call deoplete#enable()
@@ -169,6 +180,9 @@ if executable('ag')
 endif
 nnoremap <Leader>f :Ack!<space>
 
+" Double question mark searches the visually selected area in Ack.vim
+vnoremap ?? y:Ack! <C-r>=fnameescape(@")<CR><CR>
+
 " -------- CTRLP.VIM --------
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
@@ -195,8 +209,12 @@ let g:vim_markdown_follow_anchor = 1
 let g:go_fmt_experimental = 1
 let g:go_fmt_command = "goimports"
 
+autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
+
 " Allows for vim-go to save the file when we run :GoBuild
 set autowrite
+
+let g:gutentags_trace=1
 
 " ----------- GOOGLE CONFIG -----------
 source /usr/local/google/home/juliankatz/.config/nvim/additionalConfig.vim
