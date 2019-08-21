@@ -2,7 +2,7 @@ source $HOME/antigen.zsh
 
 antigen use oh-my-zsh
 
-antigen theme steeef
+antigen theme romkatv/powerlevel10k
 
 ###########################
 #####     PLUGINS     #####
@@ -13,7 +13,7 @@ antigen bundle vi-mode
 # antigen bundle zdharma/fast-syntax-highlighting
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-completions
-# antigen bundle command-not-found # do I need this??
+antigen bundle fzf
 
 antigen apply
 
@@ -36,6 +36,13 @@ alias glog="git log --graph --abbrev-commit --decorate --date=relative --format=
 alias k="kubectl"
 export cms="config-management-system"
 export ks="kube-system"
+
+# tmux
+alias tma="tmux attach -t"
+alias tmd="tmux detach"
+alias tmls="tmux ls"
+alias tmn="tmux new -s"
+alias tmks="tmux kill-session -t"
 
 ##################################
 #####     GENERAL CONFIG     #####
@@ -75,3 +82,35 @@ if [ "$(uname)" = "Linux" ]; then
 else
   source $HOME/.zshrc-personal
 fi
+
+source /usr/share/google-cloud-sdk/completion.zsh.inc
+
+
+##################################
+#####     AUTOCOMPLETION     #####
+##################################
+
+### KUBECTL ###
+
+kubectl () {
+    command kubectl $*
+    if [[ -z $KUBECTL_COMPLETE ]]
+    then
+        source <(command kubectl completion zsh)
+        KUBECTL_COMPLETE=1 
+    fi
+}
+
+### GCLOUD ###
+
+gcloud () {
+    command gcloud $*
+    if [[ -z $GCLOUD_COMPLETE ]]
+    then
+        source /usr/share/google-cloud-sdk/completion.zsh.inc
+        GCLOUD_COMPLETE=1 
+    fi
+}
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
