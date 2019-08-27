@@ -34,8 +34,6 @@ alias glog="git log --graph --abbrev-commit --decorate --date=relative --format=
 
 # variables for faster kubectl
 alias k="kubectl"
-export cms="config-management-system"
-export ks="kube-system"
 
 # tmux
 alias tma="tmux attach -t"
