@@ -35,8 +35,9 @@ set smartcase         " Makes caps required
 " Creates command for search for current visually selected text
 vnoremap // y/<C-R>"<CR>
 
-" clear search highlighting, use space bar -> l
+" clear search highlighting, use space bar, l
 nnoremap <silent> <leader>l :nohlsearch<CR><C-l>
+" with tmux
 
 " Set swap files to go in their own directory
 " set backupdir=~/.vim/.backup
@@ -96,7 +97,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'tpope/vim-endwise'
 
 " PYTHON
-Plug 'tmhedberg/SimpylFold'
+" Plug 'tmhedberg/SimpylFold'
 Plug 'hdima/python-syntax'
 
 " MARKDOWN
@@ -128,7 +129,7 @@ colorscheme tender
 " ----------------------------------------
 
 " -------- NERDTREE --------
-function OpenFind()
+function! OpenFind()
   silent NERDTreeFind
   silent NERDTreeTabsOpen
   silent NERDTreeFocusToggle
@@ -167,7 +168,7 @@ let g:deoplete#sources#go#sort_class = ['package', 'func', 'const', 'type', 'var
 " -------- ALE --------
 let g:ale_linters = {
 \   'javascript': ['standard'],
-\   'python': ['pylint']
+\   'python': ['pylint'],
 \}
 let g:ale_fix_on_save = 1
 
@@ -210,6 +211,9 @@ let g:go_fmt_experimental = 1
 let g:go_fmt_command = "goimports"
 
 autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
+
+autocmd FileType go nmap <leader>b  <Plug>(go-build)
+autocmd FileType go nmap <leader>r  <Plug>(go-run)
 
 " Allows for vim-go to save the file when we run :GoBuild
 set autowrite
