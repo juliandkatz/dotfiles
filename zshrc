@@ -32,8 +32,12 @@ alias vim="nvim"
 # Improved git log graph alias
 alias glog="git log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
 
+# pull and rebase
+alias gpmr="git pull origin master --rebase"
+
 # variables for faster kubectl
 alias k="kubectl"
+alias kls="kubectl config get-contexts"
 
 # tmux
 alias tma="tmux attach -t"
