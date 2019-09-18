@@ -214,6 +214,7 @@ autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
 
 autocmd FileType go nmap <leader>b  <Plug>(go-build)
 autocmd FileType go nmap <leader>r  <Plug>(go-run)
+autocmd FileType go nmap <leader>t  :GoAlternate<cr>
 
 " Allows for vim-go to save the file when we run :GoBuild
 set autowrite
