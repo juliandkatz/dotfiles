@@ -69,6 +69,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'w0rp/ale'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'stamblerre/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
 Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
 " Plug 'mileszs/ack.vim'
 Plug 'AndrewRadev/ack.vim'
@@ -214,7 +215,8 @@ autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
 
 autocmd FileType go nmap <leader>b  <Plug>(go-build)
 autocmd FileType go nmap <leader>r  <Plug>(go-run)
-autocmd FileType go nmap <leader>t  :GoAlternate<cr>
+autocmd FileType go nmap <leader>s :GoAlternate<cr>
+autocmd FileType go nmap <leader>t  <Plug>(go-test)
 
 " Allows for vim-go to save the file when we run :GoBuild
 set autowrite
