@@ -1,3 +1,7 @@
+if [[ ! -e $HOME/antigen.zsh ]]; then
+	curl -L git.io/antigen > antigen.zsh
+fi
+
 source $HOME/antigen.zsh
 
 antigen use oh-my-zsh
@@ -79,7 +83,7 @@ zstyle ':completion:*:*:make:*' tag-order 'targets'
 export COLORTERM=truecolor
 
 # Google workstation config
-if [ "$(uname)" = "Linux" ]; then
+if [[ -e $HOME/.zshrc-google ]]; then
   source $HOME/.zshrc-google
 else
   source $HOME/.zshrc-personal
