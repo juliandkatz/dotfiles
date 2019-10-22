@@ -224,4 +224,6 @@ set autowrite
 let g:gutentags_trace=1
 
 " ----------- GOOGLE CONFIG -----------
-source /usr/local/google/home/juliankatz/.config/nvim/additionalConfig.vim
+if filereadable("/usr/local/google/home/juliankatz/.config/nvim/additionalConfig.vim")
+  source /usr/local/google/home/juliankatz/.config/nvim/additionalConfig.vim
+endif
