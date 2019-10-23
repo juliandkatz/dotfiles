@@ -91,13 +91,11 @@ fi
 
 source /usr/share/google-cloud-sdk/completion.zsh.inc
 
-
 ##################################
 #####     AUTOCOMPLETION     #####
 ##################################
 
 ### KUBECTL ###
-
 kubectl () {
     command kubectl $*
     if [[ -z $KUBECTL_COMPLETE ]]
@@ -108,7 +106,6 @@ kubectl () {
 }
 
 ### GCLOUD ###
-
 gcloud () {
     command gcloud $*
     if [[ -z $GCLOUD_COMPLETE ]]
