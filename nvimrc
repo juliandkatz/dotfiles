@@ -74,9 +74,10 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'w0rp/ale'
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'stamblerre/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
-" Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
+
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'stamblerre/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
+Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
 Plug 'AndrewRadev/ack.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ryanoasis/vim-devicons'
@@ -154,6 +155,11 @@ let NERDTreeShowHidden=1
 " -------- DEOPLETE --------
 call deoplete#enable()
 let g:deoplete#enable_at_startup=1
+
+call deoplete#custom#option({
+      \ 'camel_case': v:true,
+      \ 'smart_case': v:true,
+      \ })
 
 " Closes the suggestion popup when we leave insert mode (i.e. when we've chosen something)
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
