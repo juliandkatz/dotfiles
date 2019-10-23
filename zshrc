@@ -18,6 +18,8 @@ antigen bundle vi-mode
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-completions
 antigen bundle fzf
+antigen bundle djui/alias-tips # Provides reminders of available aliases
+# antigen bundle extract # provides a function "extract" that can extract many filetypes
 
 antigen apply
 
@@ -32,6 +34,7 @@ zstyle ':bracketed-paste-magic' active-widgets '.self-*'
 
 alias cb="git rev-parse --abbrev-ref HEAD"
 alias vim="nvim"
+alias c="clear"
 
 # Improved git log graph alias
 alias glog="git log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
@@ -42,8 +45,10 @@ alias gpmr="git pull origin master --rebase"
 # variables for faster kubectl
 alias k="kubectl"
 alias kls="kubectl config get-contexts"
+alias kcon="kls"
 
 # tmux
+alias tm="tmux"
 alias tma="tmux attach -t"
 alias tmd="tmux detach"
 alias tmls="tmux ls"
@@ -65,7 +70,7 @@ KEYTIMEOUT=1
 export EDITOR='nvim'
 
 # Add bin for tldr
-export PATH="$PATH:$HOME/bin"
+export PATH="$HOME/bin:$PATH"
 
 # Man pages in nvim
 export MANPAGER="nvim -c 'set ft=neoman' -"
@@ -90,6 +95,12 @@ else
 fi
 
 source /usr/share/google-cloud-sdk/completion.zsh.inc
+
+# only store unique commands in the history... improve fzf Ctrl-R
+setopt HIST_IGNORE_ALL_DUPS
+
+# Somehow this improves autocomplete
+zstyle ':completion:*' users root $USER
 
 ##################################
 #####     AUTOCOMPLETION     #####

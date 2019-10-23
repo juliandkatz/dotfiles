@@ -23,7 +23,6 @@ set clipboard=unnamed " Allows yank to pbcopy
 set timeoutlen=1000   " Faster key response
 set ttimeoutlen=0     " Faster key response
 set cursorline        " Gently highlights line cursor is on
-
 set laststatus=2
 
 " SEARCH
@@ -37,11 +36,6 @@ vnoremap // y/<C-R>"<CR>
 
 " clear search highlighting, use space bar, l
 nnoremap <silent> <leader>l :nohlsearch<CR><C-l>
-" with tmux
-
-" Set swap files to go in their own directory
-" set backupdir=~/.vim/.backup
-" set directory=~/.vim/.backup
 
 " Set default fold method
 set foldmethod=indent
@@ -50,6 +44,18 @@ set nofoldenable
 " Make yank/paste more like clipboard
 xnoremap p pgvy
 
+" Kept making this mistake.  Let's just map it away
+:command! F f
+
+" Close the quickfix, location, and NERDTree windows
+nnoremap <silent> <leader>c :ccl <bar> lcl <bar> NERDTreeTabsClose <CR>
+
+" Only sets cursorline on the selected window
+augroup BgHighlight
+    autocmd!
+    autocmd WinEnter * set cul
+    autocmd WinLeave * set nocul
+augroup END
 
 " ----------------------------------------
 " PLUGINS
@@ -68,10 +74,9 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'w0rp/ale'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'stamblerre/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
-Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
-" Plug 'mileszs/ack.vim'
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'stamblerre/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
+" Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
 Plug 'AndrewRadev/ack.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ryanoasis/vim-devicons'
@@ -81,6 +86,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'djoshea/vim-autoread'
 Plug 'tpope/vim-obsession'
 " Plug 'ludovicchabant/vim-gutentags'
+Plug 'google/vim-searchindex'
 
 " GO
 Plug 'jnwhiteh/vim-golang'
@@ -174,6 +180,7 @@ let g:deoplete#sources#go#source_importer = 1
 let g:ale_linters = {
 \   'javascript': ['standard'],
 \   'python': ['pylint'],
+\   'go': ['gofmt']
 \}
 let g:ale_fix_on_save = 1
 
@@ -181,9 +188,20 @@ let g:ale_fix_on_save = 1
 let g:jsx_ext_required = 0
 
 " -------- ACK.VIM --------
+
+let g:ack_qhandler = "botright copen 30" " Change window size
+let g:ackhighlight = 1  " Highlight term in search results
+
 if executable('ag')
   let g:ackprg = 'ag --vimgrep --path-to-ignore ~/.ignore'    " Use ag over ack
 endif
+
+if executable("rg")
+  set grepprg=rg\ --vimgrep\ --no-heading
+  set grepformat=%f:%l:%c:%m,%f:%l:%m
+  let g:ackprg = 'rg --vimgrep --no-heading'
+endif
+
 nnoremap <Leader>f :Ack!<space>
 
 " Double question mark searches the visually selected area in Ack.vim
