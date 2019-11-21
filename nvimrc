@@ -19,7 +19,8 @@ set history=100       " Lengthens vim history
 set scrolloff=10      " Can't scroll within 10 lines of top of window
 set rnu               " Use relative line numbers
 set mouse=a           " Mouse support
-set clipboard=unnamed " Allows yank to pbcopy
+set clipboard=unnamed " Allows yank to pbcopy  THIS WORKS ON MAC
+" set clipboard+=unnamedplus " Allows yank to pbcopy
 set timeoutlen=1000   " Faster key response
 set ttimeoutlen=0     " Faster key response
 set cursorline        " Gently highlights line cursor is on
@@ -74,11 +75,14 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'w0rp/ale'
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'stamblerre/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
-" Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
-Plug 'AndrewRadev/ack.vim'
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'stamblerre/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
+Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
+" Plug 'AndrewRadev/ack.vim'
+" Plug 'mileszs/ack.vim'
+Plug 'dyng/ctrlsf.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'jiangmiao/auto-pairs'
 Plug 'nhooyr/neoman.vim'
@@ -152,68 +156,90 @@ let g:NERDTreeWinSize=40
 let NERDTreeShowHidden=1
 
 " -------- DEOPLETE --------
-" call deoplete#enable()
-" let g:deoplete#enable_at_startup=1
-"
-" call deoplete#custom#option({
-"       \ 'camel_case': v:true,
-"       \ 'smart_case': v:true,
-"       \ })
-"
-" " Closes the suggestion popup when we leave insert mode (i.e. when we've chosen something)
-" autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-"
-" " Changes autocomplete button to TAB
-" inoremap <silent><expr> <TAB>
-"       \ pumvisible() ? "\<C-n>" :
-"       \ <SID>check_back_space() ? "\<TAB>" :
-"       \ deoplete#mappings#manual_complete()
-" function! s:check_back_space() abort "{{{
-"   let col = col('.') - 1
-"   return !col || getline('.')[col - 1]  =~ '\s'
-" endfunction"}}}
-"
-" " deoplete-go settings
-" let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
-" let g:deoplete#sources#go#sort_class = ['package', 'func', 'const', 'type', 'var']
+call deoplete#enable()
+let g:deoplete#enable_at_startup=1
+
+call deoplete#custom#option({
+      \ 'camel_case': v:true,
+      \ 'smart_case': v:true,
+      \ })
+
+" Closes the suggestion popup when we leave insert mode (i.e. when we've chosen something)
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+
+" Changes autocomplete button to TAB
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ deoplete#mappings#manual_complete()
+function! s:check_back_space() abort "{{{
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction"}}}
+
+" deoplete-go settings
+let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
+let g:deoplete#sources#go#sort_class = ['package', 'func', 'const', 'type', 'var']
 
 " -------- ALE --------
 let g:ale_linters = {
 \   'javascript': ['standard'],
 \   'python': ['pylint'],
-\   'go': ['gofmt']
+\   'go': ['gofmt'],
+\   'sh': ['shellcheck']
 \}
 let g:ale_fix_on_save = 1
 
 " -------- VIM-JSX --------
 let g:jsx_ext_required = 0
 
-" -------- ACK.VIM --------
-
-let g:ack_qhandler = "botright copen 30" " Change window size
-let g:ackhighlight = 1  " Highlight term in search results
-
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep --path-to-ignore ~/.ignore'    " Use ag over ack
-endif
-
-if executable("rg")
-  set grepprg=rg\ --vimgrep\ --no-heading
-  set grepformat=%f:%l:%c:%m,%f:%l:%m
-  let g:ackprg = 'rg --vimgrep --no-heading'
-endif
-
-nnoremap <Leader>f :Ack!<space>
-
-" Double question mark searches the visually selected area in Ack.vim
-vnoremap ?? y:Ack! <C-r>=fnameescape(@")<CR><CR>
+" " -------- ACK.VIM --------
+"
+" let g:ackhighlight = 1  " Highlight term in search results
+"
+" if executable('ag')
+"   let g:ackprg = 'ag --vimgrep --path-to-ignore ~/.ignore'    " Use ag over ack
+" endif
+"
+" if executable("rg")
+"   set grepprg=rg\ --vimgrep\ --no-heading
+"   set grepformat=%f:%l:%c:%m,%f:%l:%m
+"   let g:ackprg = 'rg --vimgrep --no-heading'
+" endif
+"
+" nnoremap <Leader>f :Ack!<space>
+"
+" " Double question mark searches the visually selected area in Ack.vim
+" vnoremap ?? y:Ack! <C-r>=fnameescape(@")<CR><CR>
 
 " -------- CTRLP.VIM --------
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard'] " ignore files in .gitignore
+" let g:ctrlp_map = '<c-p>'
+" let g:ctrlp_cmd = 'CtrlP'
+" let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard'] " ignore files in .gitignore
 
-" -------- VIM-DEVICONS --------
+" -------- CTRLSF.VIM --------
+nnoremap <Leader>f :CtrlSF<space>
+vmap ?? <Plug>CtrlSFVwordExec
+
+let g:ctrlsf_auto_focus = {
+    \ "at": "start"
+    \ }
+
+" let g:ctrlsf_default_view_mode = 'compact'
+let g:ctrlsf_ackprg = 'rg'
+
+" -------- fzf.VIM --------
+nmap <c-p> :Files<CR>
+
+" Make ripgrep the default command
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
+
+"" -------- VIM-DEVICONS --------
 let g:webdevicons_enable=1
 let g:webdevicons_enable_nerdtree = 1
 let g:webdevicons_enable_airline_statusline = 1
