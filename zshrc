@@ -3,9 +3,7 @@ if [[ ! -e $HOME/antigen.zsh ]]; then
 fi
 
 source $HOME/antigen.zsh
-
 antigen use oh-my-zsh
-
 antigen theme romkatv/powerlevel10k
 
 ###########################
@@ -14,10 +12,10 @@ antigen theme romkatv/powerlevel10k
 
 antigen bundle git
 antigen bundle vi-mode
-# antigen bundle zdharma/fast-syntax-highlighting
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-completions
 antigen bundle fzf
+antigen bundle zdharma/zsh-diff-so-fancy
 antigen bundle djui/alias-tips # Provides reminders of available aliases
 # antigen bundle extract # provides a function "extract" that can extract many filetypes
 
@@ -34,18 +32,22 @@ zstyle ':bracketed-paste-magic' active-widgets '.self-*'
 
 alias cb="git rev-parse --abbrev-ref HEAD"
 alias vim="nvim"
+alias v="vim"
 alias c="clear"
+alias dk="docker"
 
 # Improved git log graph alias
 alias glog="git log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
 
 # pull and rebase
 alias gpmr="git pull origin master --rebase"
+alias gdno="git diff --name-only"
+alias gcho="git branch | fzf | xargs -I {} git checkout {}"
+alias gdcho="git branch | fzf | xargs -I {} git branch -D {}"
 
 # variables for faster kubectl
 alias k="kubectl"
 alias kls="kubectl config get-contexts"
-alias kcon="kls"
 
 # tmux
 alias tm="tmux"
@@ -54,6 +56,8 @@ alias tmd="tmux detach"
 alias tmls="tmux ls"
 alias tmn="tmux new -s"
 alias tmks="tmux kill-session -t"
+alias tms="tmux switch -t"
+alias tmkw="tmux kill-window"
 
 ##################################
 #####     GENERAL CONFIG     #####
@@ -98,9 +102,13 @@ source /usr/share/google-cloud-sdk/completion.zsh.inc
 
 # only store unique commands in the history... improve fzf Ctrl-R
 setopt HIST_IGNORE_ALL_DUPS
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,node_modules}/*" 2> /dev/null'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # Somehow this improves autocomplete
 zstyle ':completion:*' users root $USER
+
+export PATH="$PATH:${HOME}/.cargo/bin"
 
 ##################################
 #####     AUTOCOMPLETION     #####
@@ -130,3 +138,15 @@ gcloud () {
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+
+#######################
+#####     FZF     #####
+#######################
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# only store unique commands in the history... improves fzf Ctrl-R
+setopt HIST_IGNORE_ALL_DUPS
+
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow 2> /dev/null'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
