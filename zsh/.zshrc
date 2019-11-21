@@ -115,7 +115,6 @@ export PATH="$PATH:${HOME}/.cargo/bin"
 ##################################
 
 ### KUBECTL ###
-
 kubectl () {
     command kubectl $*
     if [[ -z $KUBECTL_COMPLETE ]]
@@ -126,7 +125,6 @@ kubectl () {
 }
 
 ### GCLOUD ###
-
 gcloud () {
     command gcloud $*
     if [[ -z $GCLOUD_COMPLETE ]]
