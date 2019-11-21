@@ -1,0 +1,34 @@
+[http]
+	cookieFile = /usr/local/google/home/juliankatz/.gitcookies
+	saveCookies = true
+	sslVerify = false
+[user]
+	name = juliankatz
+	email = juliankatz@google.com
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
+[alias]
+	d = difftool
+[pager]
+  diff = diff-so-fancy | less  --tabs=4 -S --pattern '^((added|deleted|modified): )|(commit )'
+  # Try fixing the issue with `git diff --name-only` by installing a different pager like "moar"
+[color]
+	ui = true
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[color "diff"]
+	meta = 11
+	frag = magenta bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+[diff-so-fancy]
+	stripLeadingSymbols = false
+	markEmptyLines = false
+
