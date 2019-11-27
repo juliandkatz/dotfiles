@@ -186,10 +186,10 @@ endfunction"}}}
 " deoplete-go settings
 let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 let g:deoplete#sources#go#sort_class = ['package', 'func', 'const', 'type', 'var']
-let g:deoplete#sources#go#fallback_to_source = 1
-let g:deoplete#sources#go#unimported_packages = 1
-let g:deoplete#sources#go#builtin_objects = 1
-let g:deoplete#sources#go#source_importer = 1
+let g:deoplete#sources#go#fallback_to_source=1
+let g:deoplete#sources#go#unimported_packages=1
+let g:deoplete#sources#go#builtin_objects=1
+let g:deoplete#sources#go#source_importer=1
 
 " -------- ALE --------
 let g:ale_linters = {
@@ -276,11 +276,15 @@ autocmd FileType go nmap <leader>b  <Plug>(go-build)
 autocmd FileType go nmap <leader>r  <Plug>(go-run)
 autocmd FileType go nmap <leader>s :GoAlternate<cr>
 autocmd FileType go nmap <leader>t  <Plug>(go-test)
+autocmd FileType go nmap <Leader>i  <Plug>(go-info)
 
 " Allows for vim-go to save the file when we run :GoBuild
 set autowrite
 
 let g:gutentags_trace=1
+
+let g:go_auto_type_info = 1
+set updatetime=20
 
 " ----------- GOOGLE CONFIG -----------
 if filereadable("/usr/local/google/home/juliankatz/.config/nvim/additionalConfig.vim")
