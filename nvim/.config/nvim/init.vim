@@ -133,10 +133,10 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 syntax enable
 
 " Make the search result color stick out from the colorscheme more
-augroup vimrc
+augroup changeSearchColor
   autocmd!
   autocmd ColorScheme * highlight Search guifg=Orange
-  autocmd ColorScheme * hi IncSearch guifg=#282828 ctermfg=235 guibg=Orange ctermbg=15 gui=NONE cterm=NONE
+  autocmd ColorScheme * highlight IncSearch guibg=Orange
 augroup END
 
 colorscheme tender
