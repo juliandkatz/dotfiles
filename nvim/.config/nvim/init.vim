@@ -74,10 +74,10 @@ Plug 'easymotion/vim-easymotion'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
-Plug 'w0rp/ale'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'stamblerre/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
-Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
+" Plug 'w0rp/ale'
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'stamblerre/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
+" Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
 Plug 'dyng/ctrlsf.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -162,43 +162,43 @@ let g:NERDTreeWinSize=40
 let NERDTreeShowHidden=1
 
 " -------- DEOPLETE --------
-call deoplete#enable()
-let g:deoplete#enable_at_startup=1
-
-call deoplete#custom#option({
-      \ 'camel_case': v:true,
-      \ 'smart_case': v:true,
-      \ })
-
-" Closes the suggestion popup when we leave insert mode (i.e. when we've chosen something)
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-
-" Changes autocomplete button to TAB
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ deoplete#mappings#manual_complete()
-function! s:check_back_space() abort "{{{
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
-endfunction"}}}
-
-" deoplete-go settings
-let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
-let g:deoplete#sources#go#sort_class = ['package', 'func', 'const', 'type', 'var']
-let g:deoplete#sources#go#fallback_to_source=1
-let g:deoplete#sources#go#unimported_packages=1
-let g:deoplete#sources#go#builtin_objects=1
-let g:deoplete#sources#go#source_importer=1
+" call deoplete#enable()
+" let g:deoplete#enable_at_startup=1
+"
+" call deoplete#custom#option({
+"       \ 'camel_case': v:true,
+"       \ 'smart_case': v:true,
+"       \ })
+"
+" " Closes the suggestion popup when we leave insert mode (i.e. when we've chosen something)
+" autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+"
+" " Changes autocomplete button to TAB
+" inoremap <silent><expr> <TAB>
+"       \ pumvisible() ? "\<C-n>" :
+"       \ <SID>check_back_space() ? "\<TAB>" :
+"       \ deoplete#mappings#manual_complete()
+" function! s:check_back_space() abort "{{{
+"   let col = col('.') - 1
+"   return !col || getline('.')[col - 1]  =~ '\s'
+" endfunction"}}}
+"
+" " deoplete-go settings
+" let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
+" let g:deoplete#sources#go#sort_class = ['package', 'func', 'const', 'type', 'var']
+" let g:deoplete#sources#go#fallback_to_source=1
+" let g:deoplete#sources#go#unimported_packages=1
+" let g:deoplete#sources#go#builtin_objects=1
+" let g:deoplete#sources#go#source_importer=1
 
 " -------- ALE --------
-let g:ale_linters = {
-\   'javascript': ['standard'],
-\   'python': ['pylint'],
-\   'go': ['gofmt'],
-\   'sh': ['shellcheck']
-\}
-let g:ale_fix_on_save = 1
+" let g:ale_linters = {
+" \   'javascript': ['standard'],
+" \   'python': ['pylint'],
+" \   'go': ['gofmt'],
+" \   'sh': ['shellcheck']
+" \}
+" let g:ale_fix_on_save = 1
 
 " -------- VIM-JSX --------
 let g:jsx_ext_required = 0
