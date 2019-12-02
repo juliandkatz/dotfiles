@@ -20,7 +20,6 @@ set scrolloff=10      " Can't scroll within 10 lines of top of window
 set rnu               " Use relative line numbers
 set mouse=a           " Mouse support
 set clipboard=unnamed " Allows yank to pbcopy  THIS WORKS ON MAC
-" set clipboard+=unnamedplus " Allows yank to pbcopy
 set timeoutlen=1000   " Faster key response
 set ttimeoutlen=0     " Faster key response
 set cursorline        " Gently highlights line cursor is on
@@ -46,7 +45,7 @@ set nofoldenable
 " Make yank/paste more like clipboard
 xnoremap p pgvy
 
-" Kept making this mistake.  Let's just map it away
+" Kept making this mistake.  Let's map it away
 :command! F f
 
 " Close the quickfix, location, and NERDTree windows
@@ -75,7 +74,8 @@ Plug 'easymotion/vim-easymotion'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
-Plug'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'dense-analysis/ale'
 Plug 'dyng/ctrlsf.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -89,7 +89,7 @@ Plug 'tpope/vim-obsession'
 Plug 'google/vim-searchindex'
 
 " GO
-Plug 'jnwhiteh/vim-golang'
+" Plug 'jnwhiteh/vim-golang'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 " Plug 'AndrewRadev/splitjoin.vim' " This didn't seem to work correctly... why?
 
@@ -223,32 +223,16 @@ nnoremap <silent> <space>d  :<C-u>CocList diagnostics<cr>
 " " Resume latest coc list
 " nnoremap <silent> <leader>p  :<C-u>CocListResume<CR>
 
+" -------- ALE --------
+" Use gopls as the linting engine
+let g:ale_linters = {'go': ['gopls']}
+" let g:ale_go_bingo_executable = 'gopls'
+
+let g:ale_fixers = {'go':['goimports']}
+let g:ale_fix_on_save = 1
+
 " -------- VIM-JSX --------
 let g:jsx_ext_required = 0
-
-" " -------- ACK.VIM --------
-"
-" let g:ackhighlight = 1  " Highlight term in search results
-"
-" if executable('ag')
-"   let g:ackprg = 'ag --vimgrep --path-to-ignore ~/.ignore'    " Use ag over ack
-" endif
-"
-" if executable("rg")
-"   set grepprg=rg\ --vimgrep\ --no-heading
-"   set grepformat=%f:%l:%c:%m,%f:%l:%m
-"   let g:ackprg = 'rg --vimgrep --no-heading'
-" endif
-"
-" nnoremap <Leader>f :Ack!<space>
-"
-" " Double question mark searches the visually selected area in Ack.vim
-" vnoremap ?? y:Ack! <C-r>=fnameescape(@")<CR><CR>
-
-" -------- CTRLP.VIM --------
-" let g:ctrlp_map = '<c-p>'
-" let g:ctrlp_cmd = 'CtrlP'
-" let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard'] " ignore files in .gitignore
 
 " -------- CTRLSF.VIM --------
 nnoremap <Leader>f :CtrlSF<space>
@@ -303,23 +287,23 @@ let g:python_version_2 = 1
 let g:vim_markdown_follow_anchor = 1
 
 " -------- VIM-GO --------
-let g:go_fmt_experimental = 1
-let g:go_fmt_command = "goimports"
+" let g:go_fmt_experimental = 1
+" let g:go_fmt_command = "goimports"
 
-autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
+" autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
 
-autocmd FileType go nmap <leader>b  <Plug>(go-build)
-autocmd FileType go nmap <leader>r  <Plug>(go-run)
+let g:go_fmt_fail_silently = 1
+
+" autocmd FileType go nmap <leader>b  <Plug>(go-build)
+" autocmd FileType go nmap <leader>r  <Plug>(go-run)
 autocmd FileType go nmap <silent><leader>s :GoAlternate<cr>
-autocmd FileType go nmap <leader>t  <Plug>(go-test)
-autocmd FileType go nmap <Leader>i  <Plug>(go-info)
+" autocmd FileType go nmap <leader>t  <Plug>(go-test)
+" autocmd FileType go nmap <Leader>i  <Plug>(go-info)
 
 " Allows for vim-go to save the file when we run :GoBuild
 set autowrite
 
 " let g:gutentags_trace=1
-
-let g:go_auto_type_info = 1
 
 " disable vim-go :GoDef short cut (gd)
 " this is handled by LanguageClient [LC]
