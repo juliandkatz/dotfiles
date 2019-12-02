@@ -16,5 +16,22 @@
       "filetypes": ["dockerfile"],
       "args": ["--stdio"]
     }
-  }
+  },
+
+  // don't know what this does
+  "coc.preferences.hoverTarget": "float",
+
+  // Doesn't seem to be working
+  "codeLens.enable": true,
+
+  // ---- DIAGNOSTIC INFO ---- //
+
+  // Adds erros inline next to code in red
+  "diagnostic.virtualText": true,
+
+  // not sure if this does anything
+  "diagnostic.messageTarget": "echo",
+
+  // Turns off messages to not interfere with type info from vim-go
+  "diagnostic.enableMessage": "never"
 }
