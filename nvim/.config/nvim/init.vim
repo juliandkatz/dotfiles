@@ -75,7 +75,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'dense-analysis/ale'
+" Plug 'dense-analysis/ale'
 Plug 'dyng/ctrlsf.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -225,7 +225,7 @@ autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeIm
 
 " -------- ALE --------
 " Use gopls as the linting engine
-let g:ale_linters = {'go': ['gopls']}
+" let g:ale_linters = {'go': ['gopls']}
 " let g:ale_go_bingo_executable = 'gopls'
 
 " -------- VIM-JSX --------
