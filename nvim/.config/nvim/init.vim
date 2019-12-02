@@ -85,13 +85,10 @@ Plug 'nhooyr/neoman.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'djoshea/vim-autoread'
 Plug 'tpope/vim-obsession'
-" Plug 'ludovicchabant/vim-gutentags'
 Plug 'google/vim-searchindex'
 
 " GO
-" Plug 'jnwhiteh/vim-golang'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
-" Plug 'AndrewRadev/splitjoin.vim' " This didn't seem to work correctly... why?
 
 " JAVASCRIPT
 Plug 'pangloss/vim-javascript'
@@ -104,7 +101,6 @@ Plug 'leafgarland/typescript-vim'
 Plug 'tpope/vim-endwise'
 
 " PYTHON
-" Plug 'tmhedberg/SimpylFold'
 Plug 'hdima/python-syntax'
 
 " MARKDOWN
