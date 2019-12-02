@@ -152,8 +152,8 @@ endfunction
 
 let NERDTreeIgnore=['\.DS_Store$']
 
-nnoremap <leader>n :call OpenFind()<cr>
-nnoremap <leader>a :NERDTreeTabsToggle<cr>
+nnoremap <silent><leader>n :call OpenFind()<cr>
+nnoremap <silent><leader>a :NERDTreeTabsToggle<cr>
 
 let g:nerdtree_tabs_focus_on_files=1
 let g:NERDTreeWinSize=40
@@ -201,8 +201,10 @@ nnoremap <silent> U :call <SID>show_documentation()<CR>
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
 
+nmap <leader>rf <Plug>(coc-refactor)
+
 " " Show all diagnostics
-" nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+nnoremap <silent> <space>d  :<C-u>CocList diagnostics<cr>
 " Manage extensions
 " nnoremap <silent> <leader>e  :<C-u>CocList extensions<cr>
 " Show commands
@@ -258,8 +260,21 @@ let g:webdevicons_enable_airline_statusline = 1
 set encoding=utf8
 
 " -------- LIGHTLINE --------
-let g:lightline = { 'colorscheme': 'wombat' }
+" Includes changes knowledge of diagnostic info from coc.nvim
+let g:lightline = {
+	\ 'colorscheme': 'wombat',
+	\ 'active': {
+	\   'left': [ [ 'mode', 'paste' ],
+	\             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
+	\ },
+	\ 'component_function': {
+	\   'cocstatus': 'coc#status'
+	\ },
+\ }
 set noshowmode    " Remove the normal status line
+
+" Use auocmd to force lightline update.
+autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
 " -------- PYTHON-SYNTAX --------
 let g:python_highlight_all = 1
@@ -274,21 +289,18 @@ let g:vim_markdown_follow_anchor = 1
 
 " autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
 
-" autocmd FileType go nmap <leader>b  <Plug>(go-build)
-" autocmd FileType go nmap <leader>r  <Plug>(go-run)
-" autocmd FileType go nmap <leader>s :GoAlternate<cr>
-" autocmd FileType go nmap <leader>t  <Plug>(go-test)
-" autocmd FileType go nmap <Leader>i  <Plug>(go-info)
-
 let g:go_fmt_fail_silently = 1
 
+" autocmd FileType go nmap <leader>b  <Plug>(go-build)
+" autocmd FileType go nmap <leader>r  <Plug>(go-run)
+autocmd FileType go nmap <silent><leader>s :GoAlternate<cr>
+" autocmd FileType go nmap <leader>t  <Plug>(go-test)
+" autocmd FileType go nmap <Leader>i  <Plug>(go-info)
 
 " Allows for vim-go to save the file when we run :GoBuild
 set autowrite
 
 " let g:gutentags_trace=1
-
-" let g:go_auto_type_info = 1
 
 " disable vim-go :GoDef short cut (gd)
 " this is handled by LanguageClient [LC]
