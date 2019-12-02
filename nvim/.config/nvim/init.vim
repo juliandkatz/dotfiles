@@ -201,9 +201,6 @@ nnoremap <silent> U :call <SID>show_documentation()<CR>
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
 
-" Remap for format selected region
-" vmap <leader>f  <Plug>(coc-format-selected)
-" nmap <leader>f  <Plug>(coc-format-selected)
 " " Show all diagnostics
 " nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
 " Manage extensions
@@ -221,13 +218,13 @@ nmap <leader>rn <Plug>(coc-rename)
 " " Resume latest coc list
 " nnoremap <silent> <leader>p  :<C-u>CocListResume<CR>
 
+" Format code and add imports on save
+autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
+
 " -------- ALE --------
 " Use gopls as the linting engine
 let g:ale_linters = {'go': ['gopls']}
 " let g:ale_go_bingo_executable = 'gopls'
-
-let g:ale_fixers = {'go':['goimports']}
-let g:ale_fix_on_save = 1
 
 " -------- VIM-JSX --------
 let g:jsx_ext_required = 0
@@ -244,7 +241,7 @@ let g:ctrlsf_auto_focus = {
 let g:ctrlsf_ackprg = 'rg'
 
 " -------- fzf.VIM --------
-nmap <c-p> :Files<CR>
+nmap <silent> <c-p> :Files<CR>
 
 " Make ripgrep the default command
 command! -bang -nargs=* Rg
