@@ -287,23 +287,16 @@ let g:python_version_2 = 1
 let g:vim_markdown_follow_anchor = 1
 
 " -------- VIM-GO --------
-" let g:go_fmt_experimental = 1
-" let g:go_fmt_command = "goimports"
-
-" autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
-
 let g:go_fmt_fail_silently = 1
 
 " autocmd FileType go nmap <leader>b  <Plug>(go-build)
 " autocmd FileType go nmap <leader>r  <Plug>(go-run)
 autocmd FileType go nmap <silent><leader>s :GoAlternate<cr>
-" autocmd FileType go nmap <leader>t  <Plug>(go-test)
+autocmd FileType go nmap <leader>t  <Plug>(go-test)
 " autocmd FileType go nmap <Leader>i  <Plug>(go-info)
 
 " Allows for vim-go to save the file when we run :GoBuild
 set autowrite
-
-" let g:gutentags_trace=1
 
 " disable vim-go :GoDef short cut (gd)
 " this is handled by LanguageClient [LC]
