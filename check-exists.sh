@@ -19,6 +19,7 @@ tools=( \
   gopls \
   bash-language-server \
   tldr \
+  reattach-to-user-namespace \
 )
 
 header_printed=0
