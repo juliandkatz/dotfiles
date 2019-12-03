@@ -187,13 +187,10 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Plug 'dense-analysis/ale'
-  " Use gopls as the linting engine
-  " let g:ale_linters = {'go': ['gopls']}
-  " let g:ale_go_bingo_executable = 'gopls'
+Plug 'dense-analysis/ale'
 
-  " let g:ale_fixers = {'go':['goimports']}
-  " let g:ale_fix_on_save = 1
+  let g:ale_fixers = {'go':['goimports']} " Can we get rid of this and use coc.nvim instead?
+  let g:ale_fix_on_save = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'dyng/ctrlsf.vim'
@@ -263,7 +260,7 @@ Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
   let g:go_fmt_fail_silently = 1
 
   " autocmd FileType go nmap <leader>b  <Plug>(go-build)
-  " autocmd FileType go nmap <leader>r  <Plug>(go-run)
+  autocmd FileType go nmap <leader>R  <Plug>(go-run)
   autocmd FileType go nmap <silent><leader>s :GoAlternate<cr>
   autocmd FileType go nmap <leader>t  <Plug>(go-test)
   " autocmd FileType go nmap <Leader>i  <Plug>(go-info)
