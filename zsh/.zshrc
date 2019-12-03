@@ -87,23 +87,8 @@ export LANGUAGE="en_US.UTF-8"
 # Fix make target completion
 autoload -U compinit && compinit
 zstyle ':completion:*:*:make:*' tag-order 'targets'
-# zstyle ':completion:*:make:*:targets' call-command true
 
 export COLORTERM=truecolor
-
-# Google workstation config
-if [[ -e $HOME/.zshrc-google ]]; then
-  source $HOME/.zshrc-google
-else
-  source $HOME/.zshrc-personal
-fi
-
-source /usr/share/google-cloud-sdk/completion.zsh.inc
-
-# only store unique commands in the history... improve fzf Ctrl-R
-setopt HIST_IGNORE_ALL_DUPS
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,node_modules}/*" 2> /dev/null'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # Somehow this improves autocomplete
 zstyle ':completion:*' users root $USER
@@ -148,3 +133,10 @@ setopt HIST_IGNORE_ALL_DUPS
 
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow 2> /dev/null'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+# Google workstation config
+if [[ -e $HOME/.zshrc-google ]]; then
+  source $HOME/.zshrc-google
+else
+  source $HOME/.zshrc-personal
+fi
