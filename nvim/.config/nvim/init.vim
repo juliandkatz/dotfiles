@@ -123,7 +123,7 @@ Plug 'jistr/vim-nerdtree-tabs'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
   " Better display for messages
-  " set cmdheight=2 why is this a thing?
+  set cmdheight=2 "why is this a thing?
 
   " don't give |ins-completion-menu| messages.
   set shortmess+=c
