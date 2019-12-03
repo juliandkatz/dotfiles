@@ -5,6 +5,7 @@
 # of package manager
 
 tools=( \
+  stow \
   nvim \
   tmux \
   zsh \
@@ -15,17 +16,21 @@ tools=( \
   bat \
   batgrep \
   kubectl \
+  gopls \
+  bash-language-server \
+  tldr \
 )
 
 header_printed=0
 
-for t in ${tools[@]}; do
-  which ${t} > /dev/null
-  if [ $? -eq 1  ]; then
-    if [ $header_printed -eq 0 ]; then
-      printf "NOT FOUND:\n"
+for t in "${tools[@]}"
+do
+  which "${t}" > /dev/null
+  if [ "${?}" -eq 1  ]; then
+    if [ "${header_printed}" -eq 0 ]; then
+      printf "\nNOT FOUND:\n"
       header_printed=1
     fi
-    printf "%s\n" ${t}
+    printf "%s\n" "${t}"
   fi
 done
