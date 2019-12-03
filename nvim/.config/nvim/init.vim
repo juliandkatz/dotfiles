@@ -71,6 +71,9 @@ Plug 'easymotion/vim-easymotion'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'jiangmiao/auto-pairs'
 Plug 'nhooyr/neoman.vim'
+Plug 'djoshea/vim-autoread'
+Plug 'tpope/vim-obsession'
+Plug 'google/vim-searchindex'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'jacoborus/tender.vim'
@@ -97,6 +100,7 @@ Plug 'jacoborus/tender.vim'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'scrooloose/nerdtree'
+Plug 'jistr/vim-nerdtree-tabs'
 
   function! OpenFind()
     silent NERDTreeFind
@@ -114,8 +118,6 @@ Plug 'scrooloose/nerdtree'
   let NERDTreeShowHidden=1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-Plug 'jistr/vim-nerdtree-tabs'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -233,7 +235,6 @@ Plug 'ryanoasis/vim-devicons'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Plug 'itchyny/lightline.vim'
@@ -254,10 +255,6 @@ Plug 'itchyny/lightline.vim'
   autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-Plug 'djoshea/vim-autoread'
-Plug 'tpope/vim-obsession'
-Plug 'google/vim-searchindex'
 
 " GO
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
