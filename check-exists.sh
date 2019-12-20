@@ -20,6 +20,7 @@ tools=( \
   bash-language-server \
   tldr \
   reattach-to-user-namespace \
+  exa \
 )
 
 header_printed=0
