@@ -37,7 +37,7 @@ alias c="clear"
 alias dk="docker"
 
 # Improved git log graph alias
-alias glog="git log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
+alias glog="git log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'"
 
 # pull and rebase
 alias gpmr="git pull origin master --rebase"
@@ -48,6 +48,7 @@ alias gdcho="git branch | fzf | xargs -I {} git branch -D {}"
 # variables for faster kubectl
 alias k="kubectl"
 alias kls="kubectl config get-contexts"
+alias kaf="kubectl apply -f"
 
 # tmux
 alias tm="tmux"
