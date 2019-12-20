@@ -124,7 +124,7 @@ fi
   # and set POWERLEVEL9K_MODE=nerdfont-complete. "Meslo LG S Regular Nerd Font Complete Mono" from
   # https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Meslo/S/Regular/complete is
   # very good.
-  typeset -g POWERLEVEL9K_MODE=powerline
+  typeset -g POWERLEVEL9K_MODE=nerdfont-complete
 
   # When set to true, icons appear before content on both sides of the prompt. When set
   # to false, icons go after content. If empty or not set, icons go before content in the left
