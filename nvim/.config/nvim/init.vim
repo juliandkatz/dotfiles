@@ -220,7 +220,10 @@ Plug 'junegunn/fzf.vim'
     \           : fzf#vim#with_preview('right:50%:hidden', '?'),
     \   <bang>0)
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Once upgraded to neovim 0.4, add floating window support:
+" https://www.reddit.com/r/neovim/comments/ars2ad/want_to_try_with_neovims_floating_window/
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'ryanoasis/vim-devicons'
