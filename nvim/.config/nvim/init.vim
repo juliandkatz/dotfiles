@@ -74,6 +74,7 @@ Plug 'nhooyr/neoman.vim'
 Plug 'djoshea/vim-autoread'
 Plug 'tpope/vim-obsession'
 Plug 'google/vim-searchindex'
+Plug 'psliwka/vim-smoothie'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'jacoborus/tender.vim'
