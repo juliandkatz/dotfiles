@@ -36,6 +36,8 @@ alias v="vim"
 alias c="clear"
 alias dk="docker"
 
+alias cat="bat"
+
 # Improved git log graph alias
 alias glog="git log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'"
 
@@ -43,7 +45,7 @@ alias glog="git log --graph --abbrev-commit --decorate --date=relative --format=
 alias gpmr="git pull origin master --rebase"
 alias gdno="git diff --name-only"
 alias gcho="git branch | fzf | xargs -I {} git checkout {}"
-alias gdcho="git branch | fzf | xargs -I {} git branch -D {}"
+alias gchod="git branch | fzf | xargs -I {} git branch -D {}"
 
 # variables for faster kubectl
 alias k="kubectl"
@@ -96,6 +98,8 @@ zstyle ':completion:*' users root $USER
 
 export PATH="$PATH:${HOME}/.cargo/bin"
 
+export BAT_THEME="Monokai Extended Origin"
+
 ##################################
 #####     AUTOCOMPLETION     #####
 ##################################
@@ -132,7 +136,7 @@ gcloud () {
 # only store unique commands in the history... improves fzf Ctrl-R
 setopt HIST_IGNORE_ALL_DUPS
 
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow 2> /dev/null'
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow 2> /dev/null'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # Google workstation config
