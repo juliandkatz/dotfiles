@@ -21,6 +21,9 @@ tools=( \
   tldr \
   reattach-to-user-namespace \
   exa \
+  yarn \
+  node \
+  npm \
 )
 
 header_printed=0

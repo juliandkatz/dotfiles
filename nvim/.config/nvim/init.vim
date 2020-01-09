@@ -69,12 +69,17 @@ Plug 'tomtom/tcomment_vim'
 Plug 'elzr/vim-json'
 Plug 'easymotion/vim-easymotion' 
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'jiangmiao/auto-pairs'
 Plug 'nhooyr/neoman.vim'
 Plug 'djoshea/vim-autoread'
 Plug 'tpope/vim-obsession'
 Plug 'google/vim-searchindex'
 Plug 'psliwka/vim-smoothie'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'jiangmiao/auto-pairs'
+
+  let g:AutoPairsFlyMode=1
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'jacoborus/tender.vim'
@@ -185,6 +190,16 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
   " nnoremap <silent> <leader>k  :<C-u>CocPrev<CR>
   " " Resume latest coc list
   " nnoremap <silent> <leader>p  :<C-u>CocListResume<CR>
+
+  " COC EXTENSIONS
+  Plug 'fannheyward/coc-markdownlint', {'do': 'yarn install --frozen-lockfile'}
+  Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
+  Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
+  Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
+
+  Plug 'neoclide/coc-yank', {'do': 'yarn install --frozen-lockfile'}
+    " Key mapping for special yank list to go with this extension
+    nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
