@@ -22,7 +22,7 @@
   },
 
   // don't know what this does
-  //"coc.preferences.hoverTarget": "float",
+  "coc.preferences.hoverTarget": "float",
 
   // Doesn't seem to be working
   "codeLens.enable": true,
@@ -31,14 +31,13 @@
 
   // Adds erros inline next to code in red
   "diagnostic.virtualText": true,
+  "diagnostic.virtualTextPrefix": "      ",
 
   // not sure if this does anything
-  //"diagnostic.messageTarget": "echo",
+  "diagnostic.messageTarget": "echo",
 
   // Turns off messages to not interfere with type info from vim-go
   "diagnostic.enableMessage": "never",
-
-  "diagnostic.virtualTextPrefix": "      ",
 
   "suggest.completionItemKindLabels": {
 		"keyword": "\uf1de",
