@@ -76,9 +76,9 @@ Plug 'google/vim-searchindex'
 Plug 'psliwka/vim-smoothie'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'jiangmiao/auto-pairs'
-
-  let g:AutoPairsFlyMode=1
+" Plug 'jiangmiao/auto-pairs'
+"
+"   let g:AutoPairsFlyMode=1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -196,6 +196,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
   Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
   Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
+  Plug 'neoclide/coc-pairs', {'do': 'yarn install --frozen-lockfile'} "Trying this out
 
   Plug 'neoclide/coc-yank', {'do': 'yarn install --frozen-lockfile'}
     " Key mapping for special yank list to go with this extension
