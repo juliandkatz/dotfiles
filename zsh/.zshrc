@@ -35,8 +35,9 @@ alias vim="nvim"
 alias v="vim"
 alias c="clear"
 alias dk="docker"
-
 alias cat="bat"
+
+alias dev="cd ${HOME}/dev"
 
 # Improved git log graph alias
 alias glog="git log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'"
