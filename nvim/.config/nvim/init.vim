@@ -191,6 +191,16 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
   " " Resume latest coc list
   " nnoremap <silent> <leader>p  :<C-u>CocListResume<CR>
 
+  " Set K to show documentation
+  nnoremap <silent> K :call <SID>show_documentation()<CR>
+  function! s:show_documentation()
+    if &filetype == 'vim'
+      execute 'h '.expand('<cword>')
+    else
+      call CocAction('doHover')
+    endif
+  endfunction
+
   " COC EXTENSIONS
   Plug 'fannheyward/coc-markdownlint', {'do': 'yarn install --frozen-lockfile'}
   Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
@@ -278,6 +288,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 
   let g:go_fmt_fail_silently = 1
+  let g:go_fmt_experimental = 1
 
   " autocmd FileType go nmap <leader>b  <Plug>(go-build)
   autocmd FileType go nmap <leader>R  <Plug>(go-run)
