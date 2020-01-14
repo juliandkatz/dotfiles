@@ -69,7 +69,6 @@ Plug 'tomtom/tcomment_vim'
 Plug 'elzr/vim-json'
 Plug 'easymotion/vim-easymotion' 
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'jiangmiao/auto-pairs'
 Plug 'nhooyr/neoman.vim'
 Plug 'djoshea/vim-autoread'
 Plug 'tpope/vim-obsession'
@@ -114,6 +113,14 @@ Plug 'joshdick/onedark.vim'
   endif
 
   syntax enable
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Plug 'jiangmiao/auto-pairs'
+"
+"   let g:AutoPairsFlyMode=1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -204,6 +211,27 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
   " " Resume latest coc list
   " nnoremap <silent> <leader>p  :<C-u>CocListResume<CR>
 
+  " Set K to show documentation
+  nnoremap <silent> K :call <SID>show_documentation()<CR>
+  function! s:show_documentation()
+    if &filetype == 'vim'
+      execute 'h '.expand('<cword>')
+    else
+      call CocAction('doHover')
+    endif
+  endfunction
+
+  " COC EXTENSIONS
+  Plug 'fannheyward/coc-markdownlint', {'do': 'yarn install --frozen-lockfile'}
+  Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
+  Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
+  Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
+  Plug 'neoclide/coc-pairs', {'do': 'yarn install --frozen-lockfile'} "Trying this out
+
+  Plug 'neoclide/coc-yank', {'do': 'yarn install --frozen-lockfile'}
+    " Key mapping for special yank list to go with this extension
+    nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Plug 'dense-analysis/ale'
@@ -280,6 +308,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 
   let g:go_fmt_fail_silently = 1
+  let g:go_fmt_experimental = 1
 
   " autocmd FileType go nmap <leader>b  <Plug>(go-build)
   autocmd FileType go nmap <leader>R  <Plug>(go-run)
