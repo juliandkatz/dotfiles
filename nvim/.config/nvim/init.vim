@@ -92,6 +92,14 @@ Plug 'joshdick/onedark.vim'
     endif
   endif
 
+  " augroup colorextend
+  "   autocmd!
+  "   " autocmd ColorScheme * highlight Search guifg=Orange
+  "   " autocmd ColorScheme * highlight IncSearch guibg=Orange
+  "   autocmd ColorScheme * call onedark#extend_highlight("Search", { "gui": "underline,Bold" })
+  "   " autocmd ColorScheme * call onedark#extend_highlight("Normal", { "gui": "bold" })
+  " augroup END
+
   syntax enable
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -205,6 +213,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
     endif
   endfunction
 
+  " Format go code on save
+  autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
+
   " COC EXTENSIONS
   Plug 'fannheyward/coc-markdownlint', {'do': 'yarn install --frozen-lockfile'}
   Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
@@ -217,11 +228,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
     nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-Plug 'dense-analysis/ale'
-
-  let g:ale_fixers = {'go':['goimports']} " Can we get rid of this and use coc.nvim instead?
-  let g:ale_fix_on_save = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'dyng/ctrlsf.vim'
