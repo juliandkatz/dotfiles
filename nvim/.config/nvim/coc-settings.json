@@ -6,7 +6,8 @@
       "filetypes": ["go"],
       "initializationOptions": {
         "usePlaceholders": true,
-        "completeUnimported": true
+        "completeUnimported": true,
+        "staticcheck": true
       }
     },
     "bash": {
@@ -30,7 +31,7 @@
 
   // ---- DIAGNOSTIC INFO ---- //
 
-  // Adds erros inline next to code in red
+  // Adds errors inline next to code in red
   "diagnostic.virtualText": true,
   "diagnostic.virtualTextPrefix": "      ",
 
