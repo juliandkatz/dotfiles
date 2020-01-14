@@ -5,7 +5,8 @@
       "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
       "filetypes": ["go"],
       "initializationOptions": {
-        "usePlaceholders": true
+        "usePlaceholders": true,
+        "staticcheck": true
       }
     },
     "bash": {
@@ -29,7 +30,7 @@
 
   // ---- DIAGNOSTIC INFO ---- //
 
-  // Adds erros inline next to code in red
+  // Adds errors inline next to code in red
   "diagnostic.virtualText": true,
   "diagnostic.virtualTextPrefix": "      ",
 
