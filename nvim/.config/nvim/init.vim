@@ -137,13 +137,17 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
   " always show signcolumns
   set signcolumn=yes
 
-  " Use tab for trigger completion with characters ahead and navigate.
-  " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+  " Autocomplete mappings:
+  " - TAB will trigger autocompletion options when in 
+  inoremap <silent><expr> <c-J>
+        \ pumvisible() ? "\<C-n>" :
+        \ <SID>check_back_space() ? "\<TAB>" :
+        \ coc#refresh()
   inoremap <silent><expr> <TAB>
         \ pumvisible() ? "\<C-n>" :
         \ <SID>check_back_space() ? "\<TAB>" :
         \ coc#refresh()
-  inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+  inoremap <expr><c-K> pumvisible() ? "\<C-p>" : "\<C-h>"
 
   function! s:check_back_space() abort
     let col = col('.') - 1
@@ -247,8 +251,41 @@ Plug 'junegunn/fzf.vim'
     \           : fzf#vim#with_preview('right:50%:hidden', '?'),
     \   <bang>0)
 
-" Once upgraded to neovim 0.4, add floating window support:
-" https://www.reddit.com/r/neovim/comments/ars2ad/want_to_try_with_neovims_floating_window/
+  " Once upgraded to neovim 0.4, add floating window support:
+  " https://www.reddit.com/r/neovim/comments/ars3ad/want_to_try_with_neovims_floating_window/
+
+  " Reverse the layout to make the FZF list top-down
+  let $FZF_DEFAULT_OPTS='--layout=reverse'
+
+  " Using the custom window creation function
+  let g:fzf_layout = { 'window': 'call FloatingFZF()' }
+
+  " Function to create the custom floating window
+  function! FloatingFZF()
+    " creates a scratch, unlisted, new, empty, unnamed buffer
+    " to be used in the floating window
+    let buf = nvim_create_buf(v:false, v:true)
+
+    " 90% of the height
+    let height = float2nr(&lines * 0.9)
+    " 60% of the height
+    let width = float2nr(&columns * 0.6)
+    " horizontal position (centralized)
+    let horizontal = float2nr((&columns - width) / 2)
+    " vertical position (one line down of the top)
+    let vertical = 1
+
+    let opts = {
+          \ 'relative': 'editor',
+          \ 'row': vertical,
+          \ 'col': horizontal,
+          \ 'width': width,
+          \ 'height': height
+          \ }
+
+    " open the new window, floating, and enter to it
+    call nvim_open_win(buf, v:true, opts)
+  endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
