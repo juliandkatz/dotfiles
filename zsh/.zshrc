@@ -69,7 +69,7 @@ alias tmkw="tmux kill-window"
 
 # Set colors correctly for vim (MAC)
 # TERM="screen-256color"
-export TERM="xterm-256color"
+# export TERM="xterm-256color"
 
 # improve responsiveness
 KEYTIMEOUT=1
@@ -80,8 +80,12 @@ export EDITOR='nvim'
 # Add bin for tldr
 export PATH="$HOME/bin:$PATH"
 
-# Man pages in nvim
-export MANPAGER="nvim -c 'set ft=neoman' -"
+# This still works on my mac, but is broken on linux.  Can I replace it inboth places?
+if [ $(uname) == "Darwin"]; then
+  export MANPAGER="nvim -c 'set ft=neoman' -"
+else
+  export MANPAGER="nvim +Man!"
+fi
 
 # Fix weird non unicode characters
 export LC_ALL="en_US.UTF-8"
@@ -92,7 +96,7 @@ export LANGUAGE="en_US.UTF-8"
 autoload -U compinit && compinit
 zstyle ':completion:*:*:make:*' tag-order 'targets'
 
-export COLORTERM=truecolor
+# export COLORTERM=truecolor
 
 # Somehow this improves autocomplete
 zstyle ':completion:*' users root $USER
