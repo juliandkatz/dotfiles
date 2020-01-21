@@ -80,13 +80,6 @@ export EDITOR='nvim'
 # Add bin for tldr
 export PATH="$HOME/bin:$PATH"
 
-# This still works on my mac, but is broken on linux.  Can I replace it inboth places?
-if [ $(uname) == "Darwin"]; then
-  export MANPAGER="nvim -c 'set ft=neoman' -"
-else
-  export MANPAGER="nvim +Man!"
-fi
-
 # Fix weird non unicode characters
 export LC_ALL="en_US.UTF-8"
 export LANG="en_US.UTF-8"
