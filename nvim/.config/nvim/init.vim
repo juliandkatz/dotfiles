@@ -92,13 +92,23 @@ Plug 'joshdick/onedark.vim'
     endif
   endif
 
-  " augroup colorextend
-  "   autocmd!
-  "   " autocmd ColorScheme * highlight Search guifg=Orange
-  "   " autocmd ColorScheme * highlight IncSearch guibg=Orange
-  "   autocmd ColorScheme * call onedark#extend_highlight("Search", { "gui": "underline,Bold" })
-  "   " autocmd ColorScheme * call onedark#extend_highlight("Normal", { "gui": "bold" })
-  " augroup END
+  augroup colorextend
+    autocmd!
+
+    " Make the main text lighter
+    autocmd ColorScheme * call onedark#extend_highlight("Normal", { "fg": { "cterm": "253" } })
+
+    " Make search results orange
+    autocmd ColorScheme * call onedark#extend_highlight("Search", { "fg": { "cterm": "214" }})
+
+    " Remove search result background
+    autocmd ColorScheme * call onedark#extend_highlight("Search", { "bg": { "cterm": "NONE" }})
+
+    " Make search results underlined
+    autocmd ColorScheme * call onedark#extend_highlight("Search", { "cterm": "underline" })
+    autocmd ColorScheme * call onedark#extend_highlight("Search", { "gui": "underline" })
+    autocmd ColorScheme * call onedark#extend_highlight("Search", { "term": "underline" })
+  augroup END
 
   syntax enable
 
