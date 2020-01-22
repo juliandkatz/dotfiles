@@ -24,6 +24,9 @@ tools=( \
   yarn \
   node \
   npm \
+  shellcheck \
+  shfmt \
+  nix \
 )
 
 header_printed=0

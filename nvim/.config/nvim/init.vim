@@ -144,7 +144,7 @@ Plug 'jistr/vim-nerdtree-tabs'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release' }
 
   " Better display for messages
   set cmdheight=2 "why is this a thing?
@@ -231,11 +231,15 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
   Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
   Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
-  Plug 'neoclide/coc-pairs', {'do': 'yarn install --frozen-lockfile'} "Trying this out
+  Plug 'neoclide/coc-pairs', {'do': 'yarn install --frozen-lockfile'}
+
+  " Plug 'iamcco/coc-diagnostic', {'do': 'yarn install --frozen-lockfile'} "
+  " This on only works when installed with CocInstall"
 
   Plug 'neoclide/coc-yank', {'do': 'yarn install --frozen-lockfile'}
     " Key mapping for special yank list to go with this extension
     nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
