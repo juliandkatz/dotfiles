@@ -105,9 +105,8 @@ Plug 'joshdick/onedark.vim'
     autocmd ColorScheme * call onedark#extend_highlight("Search", { "bg": { "cterm": "NONE" }})
 
     " Make search results underlined
-    autocmd ColorScheme * call onedark#extend_highlight("Search", { "cterm": "underline" })
-    autocmd ColorScheme * call onedark#extend_highlight("Search", { "gui": "underline" })
-    autocmd ColorScheme * call onedark#extend_highlight("Search", { "term": "underline" })
+    let s:yellow = { "gui": "#ffaf00", "cterm": "214", "cterm16": "3" }
+    autocmd ColorScheme * call onedark#set_highlight("Search", { "fg": s:yellow, "gui": "underline", "cterm": "underline" })
   augroup END
 
   syntax enable
