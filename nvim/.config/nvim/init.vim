@@ -270,8 +270,11 @@ Plug 'junegunn/fzf.vim'
     \           : fzf#vim#with_preview('right:50%:hidden', '?'),
     \   <bang>0)
 
+  " Have to declare all actions to override some actions
   let g:fzf_action = {
-      \ 'ctrl-i': 'split'
+      \ 'ctrl-t': 'tab split',
+      \ 'ctrl-i': 'split',
+      \ 'ctrl-v': 'vsplit'
       \ }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
