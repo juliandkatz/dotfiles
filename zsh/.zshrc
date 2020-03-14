@@ -1,8 +1,5 @@
-if [[ ! -e $HOME/antigen.zsh ]]; then
-	curl -L git.io/antigen > antigen.zsh
-fi
-
 source $HOME/antigen.zsh
+
 antigen use oh-my-zsh
 antigen theme romkatv/powerlevel10k
 
@@ -19,12 +16,18 @@ antigen bundle zdharma/zsh-diff-so-fancy
 antigen bundle djui/alias-tips # Provides reminders of available aliases
 # antigen bundle extract # provides a function "extract" that can extract many filetypes
 
+antigen bundle aws
+
 antigen apply
 
 ###### PLUGIN CONFIG ######
 
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+
 # fix slow pasting with fast-syntax-highlight 
 zstyle ':bracketed-paste-magic' active-widgets '.self-*'
+printf "\e[?2004l" # can fix bracketed paste something?
 
 #############################
 ######     ALIASES     ######
@@ -42,11 +45,12 @@ alias dev="cd ${HOME}/dev"
 # Improved git log graph alias
 alias glog="git log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'"
 
-# pull and rebase
 alias gpmr="git pull origin master --rebase"
 alias gdno="git diff --name-only"
 alias gcho="git branch | fzf | xargs -I {} git checkout {}"
 alias gchod="git branch | fzf | xargs -I {} git branch -D {}"
+alias gcfd="git clean -fd"
+alias gft="git fetch --tags"
 
 # variables for faster kubectl
 alias k="kubectl"
@@ -122,8 +126,15 @@ gcloud () {
     fi
 }
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+### GCLOUD ###
+aws () {
+    command aws $*
+    if [[ -z $AWS_CLI_COMPLETE ]]
+    then
+        source ${HOME}/.local/bin/aws_zsh_completer.sh
+        AWS_CLI_COMPLETE=1 
+    fi
+}
 
 #######################
 #####     FZF     #####
@@ -143,3 +154,7 @@ if [[ -e $HOME/.zshrc-google ]]; then
 else
   source $HOME/.zshrc-personal
 fi
+
+
+# Put this in a better place
+source /etc/bash_completion.d/g4d
