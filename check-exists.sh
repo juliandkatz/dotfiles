@@ -27,6 +27,8 @@ tools=( \
   shellcheck \
   shfmt \
   nix \
+  fd \
+  fdfind
 )
 
 header_printed=0
