@@ -79,18 +79,20 @@ Plug 'psliwka/vim-smoothie'
 
 Plug 'joshdick/onedark.vim'
 
-  if (empty($TMUX))
-    if (has("nvim"))
-      "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
-      let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-    endif
-    "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
-    "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
-    " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
-    if (has("termguicolors"))
-      set termguicolors
-    endif
-  endif
+  set notermguicolors
+
+  " if (empty($TMUX))
+  "   if (has("nvim"))
+  "     "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+  "     let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  "   endif
+  "   "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
+  "   "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+  "   " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+  "   if (has("termguicolors"))
+  "     set termguicolors
+  "   endif
+  " endif
 
   augroup colorextend
     autocmd!
@@ -154,6 +156,11 @@ Plug 'neoclide/coc.nvim', {'branch': 'release' }
   " always show signcolumns
   set signcolumn=yes
 
+  function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
+  endfunction
+
   " Autocomplete mappings:
   " - TAB will trigger autocompletion options when in 
   inoremap <silent><expr> <c-J>
@@ -166,10 +173,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release' }
         \ coc#refresh()
   inoremap <expr><c-K> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-  function! s:check_back_space() abort
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~# '\s'
-  endfunction
+  " I've tried different options for a better key for selecting a completion
+  " option.  But it turns out that they're all broken or slow.  The best
+  " option seems to be the built in C-y.
 
   " Use <c-space> to trigger completion.
   inoremap <silent><expr> <c-space> coc#refresh()
@@ -223,7 +229,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release' }
   endfunction
 
   " Format go code on save
-  autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
+  " autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
 
   " COC EXTENSIONS
   Plug 'fannheyward/coc-markdownlint', {'do': 'yarn install --frozen-lockfile'}
@@ -265,7 +271,7 @@ Plug 'junegunn/fzf.vim'
   " Make ripgrep the default command
   command! -bang -nargs=* Rg
     \ call fzf#vim#grep(
-    \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+    \   'rg --no-ignore --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
     \   <bang>0 ? fzf#vim#with_preview('up:60%')
     \           : fzf#vim#with_preview('right:50%:hidden', '?'),
     \   <bang>0)

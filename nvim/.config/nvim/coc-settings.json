@@ -1,13 +1,13 @@
 {
   "languageserver": {
-    "golang": {
-      "command": "gopls",
-      "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
-      "filetypes": ["go"],
-      "initializationOptions": {
-        "usePlaceholders": true
-      }
-    },
+    // "golang": {
+    //   "command": "gopls",
+    //   "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+    //   "filetypes": ["go"],
+    //   "initializationOptions": {
+    //     // "usePlaceholders": true
+    //   }
+    // },
     "bash": {
       "command": "bash-language-server",
       "args": ["start"],
@@ -18,7 +18,34 @@
       "command": "docker-langserver",
       "filetypes": ["dockerfile"],
       "args": ["--stdio"]
+    },
+    "ciderlsp": {
+      "command": "/google/bin/releases/editor-devtools/ciderlsp",
+      "args": [
+        "--tooltag=coc-nvim",
+        "--noforward_sync_responses"
+      ],
+      "filetypes": [
+        "c",
+        "cpp",
+        "proto",
+        "textproto",
+        "go"
+      ]
     }
+    // "kythe": {
+    //   "command": "/google/bin/releases/grok/tools/kythe_languageserver",
+    //   "args": [
+    //     "--google3"
+    //   ],
+    //   "filetypes": [
+    //     "python",
+    //     "go",
+    //     "java",
+    //     "cpp",
+    //     "proto"
+    //   ]
+    // }
   },
 
   // don't know what this does
@@ -27,6 +54,17 @@
   // Doesn't seem to be working
   "codeLens.enable": true,
 
+  // Make jumps try to go to open tabs
+  // "coc.preferences.jumpCommand": "drop",
+
+  // Make "v" the vsplit command in CocList
+  "list.normalMappings": {
+    "v": "action:vsplit",
+  },
+
+  // makes the completion automatically select the first completed item
+  "suggest.noselect": false,
+  
   // ---- DIAGNOSTIC INFO ---- //
 
   // Adds errors inline next to code in red
