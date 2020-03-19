@@ -393,3 +393,8 @@ endif
 if filereadable("/Users/juliankatz/dev/vimscript-the-hard-way/exercises.vim")
   source /Users/juliankatz/dev/vimscript-the-hard-way/exercises.vim
 endif
+
+" A fix for nerdtree devicons having brackets after vimrc source
+if exists("g:loaded_webdevicons")
+  call webdevicons#refresh()
+endif
