@@ -56,6 +56,9 @@ filetype plugin indent on
       autocmd WinLeave * set nocul
   augroup END
 
+  " From insert mode, Ctrl+u will uppercase the current word
+  inoremap <c-u> <esc>viWUA
+
 " ----------------------------------------
 " PLUGINS
 " ----------------------------------------
@@ -166,22 +169,20 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
   inoremap <silent><expr> <c-space> coc#refresh()
 
   " Use `[c` and `]c` to navigate diagnostics
-  nmap <silent> [c <Plug>(coc-diagnostic-prev)
-  nmap <silent> ]c <Plug>(coc-diagnostic-next)
+  nnoremap <silent> [c <Plug>(coc-diagnostic-prev)
+  nnoremap <silent> ]c <Plug>(coc-diagnostic-next)
 
   " Remap keys for gotos
-  nmap <silent> gd <Plug>(coc-definition)
-  nmap <silent> gy <Plug>(coc-type-definition)
-  nmap <silent> gi <Plug>(coc-implementation)
-  nmap <silent> gr <Plug>(coc-references)
+  nnoremap <silent> gd <Plug>(coc-definition)
+  nnoremap <silent> gt <Plug>(coc-type-definition)
+  nnoremap <silent> gi <Plug>(coc-implementation)
+  nnoremap <silent> gr <Plug>(coc-references)
 
-  " Use U to show documentation in preview window
-  nnoremap <silent> U :call <SID>show_documentation()<CR>
 
   " Remap for rename current word
-  nmap <leader>rn <Plug>(coc-rename)
+  nnoremap <leader>rn <Plug>(coc-rename)
 
-  nmap <leader>rf <Plug>(coc-refactor)
+  nnoremap <leader>rf <Plug>(coc-refactor)
 
   " Remap for format selected region
   " vmap <leader>f  <Plug>(coc-format-selected)
@@ -204,7 +205,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
   " nnoremap <silent> <leader>p  :<C-u>CocListResume<CR>
 
   " Set K to show documentation
-  nnoremap <silent> K :call <SID>show_documentation()<CR>
+  " Use U to show documentation in preview window
+  nnoremap <silent> U :call <SID>show_documentation()<CR>
+  " nnoremap <silent> K :call <SID>show_documentation()<CR>
   function! s:show_documentation()
     if &filetype == 'vim'
       execute 'h '.expand('<cword>')
@@ -219,7 +222,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
   " COC EXTENSIONS
   Plug 'fannheyward/coc-markdownlint', {'do': 'yarn install --frozen-lockfile'}
   Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
-  Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
+  " Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
   Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
   Plug 'neoclide/coc-pairs', {'do': 'yarn install --frozen-lockfile'} "Trying this out
 
@@ -233,7 +236,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'dyng/ctrlsf.vim'
 
   nnoremap <Leader>f :CtrlSF<space>
-  vmap ?? <Plug>CtrlSFVwordExec
+  vnoremap ?? <Plug>CtrlSFVwordExec
 
   let g:ctrlsf_auto_focus = {
       \ "at": "start"
@@ -247,7 +250,7 @@ Plug 'dyng/ctrlsf.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
-  nmap <c-p> :Files<CR>
+  nnoremap <c-p> :Files<CR>
 
   " Make ripgrep the default command
   command! -bang -nargs=* Rg
@@ -301,9 +304,9 @@ Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
   let g:go_fmt_experimental = 1
 
   " autocmd FileType go nmap <leader>b  <Plug>(go-build)
-  autocmd FileType go nmap <leader>R  <Plug>(go-run)
-  autocmd FileType go nmap <silent><leader>s :GoAlternate<cr>
-  autocmd FileType go nmap <leader>t  <Plug>(go-test)
+  autocmd FileType go nnoremap <leader>R  <Plug>(go-run)
+  autocmd FileType go nnoremap <silent><leader>s :GoAlternate<cr>
+  autocmd FileType go nnoremap <leader>t  <Plug>(go-test)
   " autocmd FileType go nmap <Leader>i  <Plug>(go-info)
 
   " Allows for vim-go to save the file when we run :GoBuild
@@ -361,4 +364,9 @@ colorscheme onedark
 " ----------- GOOGLE CONFIG -----------
 if filereadable("/usr/local/google/home/juliankatz/.config/nvim/additionalConfig.vim")
   source /usr/local/google/home/juliankatz/.config/nvim/additionalConfig.vim
+endif
+
+" Vimscript exercises
+if filereadable("/Users/juliankatz/dev/vimscript-the-hard-way/exercises.vim")
+  source /Users/juliankatz/dev/vimscript-the-hard-way/exercises.vim
 endif
