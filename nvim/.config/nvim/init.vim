@@ -82,26 +82,37 @@ Plug 'psliwka/vim-smoothie'
 
 Plug 'joshdick/onedark.vim'
 
-  if (empty($TMUX))
-    if (has("nvim"))
-      "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
-      let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-    endif
-    "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
-    "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
-    " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
-    if (has("termguicolors"))
-      set termguicolors
-    endif
-  endif
+  set notermguicolors
 
-  " augroup colorextend
-  "   autocmd!
-  "   " autocmd ColorScheme * highlight Search guifg=Orange
-  "   " autocmd ColorScheme * highlight IncSearch guibg=Orange
-  "   autocmd ColorScheme * call onedark#extend_highlight("Search", { "gui": "underline,Bold" })
-  "   " autocmd ColorScheme * call onedark#extend_highlight("Normal", { "gui": "bold" })
-  " augroup END
+  " if (empty($TMUX))
+  "   if (has("nvim"))
+  "     "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+  "     let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  "   endif
+  "   "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
+  "   "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+  "   " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+  "   if (has("termguicolors"))
+  "     set termguicolors
+  "   endif
+  " endif
+
+  augroup colorextend
+    autocmd!
+
+    " Make the main text lighter
+    autocmd ColorScheme * call onedark#extend_highlight("Normal", { "fg": { "cterm": "253" } })
+
+    " Make search results orange
+    autocmd ColorScheme * call onedark#extend_highlight("Search", { "fg": { "cterm": "214" }})
+
+    " Remove search result background
+    autocmd ColorScheme * call onedark#extend_highlight("Search", { "bg": { "cterm": "NONE" }})
+
+    " Make search results underlined
+    let s:yellow = { "gui": "#ffaf00", "cterm": "214", "cterm16": "3" }
+    autocmd ColorScheme * call onedark#set_highlight("Search", { "fg": s:yellow, "gui": "underline", "cterm": "underline" })
+  augroup END
 
   syntax enable
 
@@ -137,7 +148,7 @@ Plug 'jistr/vim-nerdtree-tabs'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release' }
 
   " Better display for messages
   set cmdheight=2 "why is this a thing?
@@ -147,6 +158,11 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
   " always show signcolumns
   set signcolumn=yes
+
+  function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
+  endfunction
 
   " Autocomplete mappings:
   " - TAB will trigger autocompletion options when in 
@@ -160,10 +176,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
         \ coc#refresh()
   inoremap <expr><c-K> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-  function! s:check_back_space() abort
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~# '\s'
-  endfunction
+  " I've tried different options for a better key for selecting a completion
+  " option.  But it turns out that they're all broken or slow.  The best
+  " option seems to be the built in C-y.
 
   " Use <c-space> to trigger completion.
   inoremap <silent><expr> <c-space> coc#refresh()
@@ -217,18 +232,22 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
   endfunction
 
   " Format go code on save
-  autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
+  " autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
 
   " COC EXTENSIONS
   Plug 'fannheyward/coc-markdownlint', {'do': 'yarn install --frozen-lockfile'}
   Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
   " Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
   Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
-  Plug 'neoclide/coc-pairs', {'do': 'yarn install --frozen-lockfile'} "Trying this out
+  Plug 'neoclide/coc-pairs', {'do': 'yarn install --frozen-lockfile'}
+
+  " Plug 'iamcco/coc-diagnostic', {'do': 'yarn install --frozen-lockfile'} "
+  " This on only works when installed with CocInstall"
 
   Plug 'neoclide/coc-yank', {'do': 'yarn install --frozen-lockfile'}
     " Key mapping for special yank list to go with this extension
     nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -255,13 +274,17 @@ Plug 'junegunn/fzf.vim'
   " Make ripgrep the default command
   command! -bang -nargs=* Rg
     \ call fzf#vim#grep(
-    \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+    \   'rg --no-ignore --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
     \   <bang>0 ? fzf#vim#with_preview('up:60%')
     \           : fzf#vim#with_preview('right:50%:hidden', '?'),
     \   <bang>0)
 
-  " Once upgraded to neovim 0.4, add floating window support:
-  " https://www.reddit.com/r/neovim/comments/ars3ad/want_to_try_with_neovims_floating_window/
+  " Have to declare all actions to override some actions
+  let g:fzf_action = {
+      \ 'ctrl-t': 'tab split',
+      \ 'ctrl-i': 'split',
+      \ 'ctrl-v': 'vsplit'
+      \ }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 

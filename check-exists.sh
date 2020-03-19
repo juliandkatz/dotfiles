@@ -24,6 +24,11 @@ tools=( \
   yarn \
   node \
   npm \
+  shellcheck \
+  shfmt \
+  nix \
+  fd \
+  fdfind
 )
 
 header_printed=0
