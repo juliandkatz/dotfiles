@@ -104,7 +104,8 @@ Plug 'joshdick/onedark.vim'
     autocmd ColorScheme * call onedark#extend_highlight("Normal", { "fg": { "cterm": "253" } })
 
     " Make search results orange
-    autocmd ColorScheme * call onedark#extend_highlight("Search", { "fg": { "cterm": "214" }})
+    " autocmd ColorScheme * call onedark#extend_highlight("Search", { "fg": { "cterm": "214" }})
+    " I apparently don't need this??? it's breaking vimrc source
 
     " Remove search result background
     autocmd ColorScheme * call onedark#extend_highlight("Search", { "bg": { "cterm": "NONE" }})
