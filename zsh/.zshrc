@@ -80,9 +80,6 @@ export EDITOR='nvim'
 # Add bin for tldr
 export PATH="$HOME/bin:$PATH"
 
-# Man pages in nvim
-export MANPAGER="nvim -c 'set ft=neoman' -"
-
 # Fix weird non unicode characters
 export LC_ALL="en_US.UTF-8"
 export LANG="en_US.UTF-8"
