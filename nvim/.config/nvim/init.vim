@@ -59,6 +59,12 @@ filetype plugin indent on
   " From insert mode, Ctrl+u will uppercase the current word
   inoremap <c-u> <esc>viWUA
 
+  " Bring up vimrc in a split
+  nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+
+  " Source the vimrc
+  nnoremap <leader>sv :source $MYVIMRC<cr>
+
 " ----------------------------------------
 " PLUGINS
 " ----------------------------------------
@@ -399,3 +405,6 @@ endif
 if exists("g:loaded_webdevicons")
   call webdevicons#refresh()
 endif
+
+" Print a cat on source
+echo "Katz-Vim   >^.^<"
