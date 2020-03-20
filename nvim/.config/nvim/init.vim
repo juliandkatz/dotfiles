@@ -181,7 +181,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release' }
         \ pumvisible() ? "\<C-n>" :
         \ <SID>check_back_space() ? "\<TAB>" :
         \ coc#refresh()
-  inoremap <expr><c-K> pumvisible() ? "\<C-p>" : "\<C-h>"
+  imap <expr><c-K> pumvisible() ? "\<C-p>" : "\<C-h>"
 
   " I've tried different options for a better key for selecting a completion
   " option.  But it turns out that they're all broken or slow.  The best
@@ -191,40 +191,40 @@ Plug 'neoclide/coc.nvim', {'branch': 'release' }
   inoremap <silent><expr> <c-space> coc#refresh()
 
   " Use `[c` and `]c` to navigate diagnostics
-  nnoremap <silent> [c <Plug>(coc-diagnostic-prev)
-  nnoremap <silent> ]c <Plug>(coc-diagnostic-next)
+  nmap <silent> [c <Plug>(coc-diagnostic-prev)
+  nmap <silent> ]c <Plug>(coc-diagnostic-next)
 
   " Remap keys for gotos
-  nnoremap <silent> gd <Plug>(coc-definition)
-  nnoremap <silent> gt <Plug>(coc-type-definition)
-  nnoremap <silent> gi <Plug>(coc-implementation)
-  nnoremap <silent> gr <Plug>(coc-references)
+  nmap <silent> gd <Plug>(coc-definition)
+  nmap <silent> gt <Plug>(coc-type-definition)
+  nmap <silent> gi <Plug>(coc-implementation)
+  nmap <silent> gr <Plug>(coc-references)
 
 
   " Remap for rename current word
-  nnoremap <leader>rn <Plug>(coc-rename)
+  nmap <leader>rn <Plug>(coc-rename)
 
-  nnoremap <leader>rf <Plug>(coc-refactor)
+  nmap <leader>rf <Plug>(coc-refactor)
 
   " Remap for format selected region
   " vmap <leader>f  <Plug>(coc-format-selected)
   " nmap <leader>f  <Plug>(coc-format-selected)
   " " Show all diagnostics
-  nnoremap <silent> <space>d  :<C-u>CocList diagnostics<cr>
+  nmap <silent> <space>d  :<C-u>CocList diagnostics<cr>
   " Manage extensions
-  " nnoremap <silent> <leader>e  :<C-u>CocList extensions<cr>
+  " nmap <silent> <leader>e  :<C-u>CocList extensions<cr>
   " Show commands
-  " nnoremap <silent> <leader>c  :<C-u>CocList commands<cr>
+  " nmap <silent> <leader>c  :<C-u>CocList commands<cr>
   " " Find symbol of current document
-  " nnoremap <silent> <leader>o  :<C-u>CocList outline<cr>
+  " nmap <silent> <leader>o  :<C-u>CocList outline<cr>
   " " Search workspace symbols
-  " nnoremap <silent> <leader>s  :<C-u>CocList -I symbols<cr>
+  " nmap <silent> <leader>s  :<C-u>CocList -I symbols<cr>
   " " Do default action for next item.
-  " nnoremap <silent> <leader>j  :<C-u>CocNext<CR>
+  " nmap <silent> <leader>j  :<C-u>CocNext<CR>
   " " Do default action for previous item.
-  " nnoremap <silent> <leader>k  :<C-u>CocPrev<CR>
+  " nmap <silent> <leader>k  :<C-u>CocPrev<CR>
   " " Resume latest coc list
-  " nnoremap <silent> <leader>p  :<C-u>CocListResume<CR>
+  " nmap <silent> <leader>p  :<C-u>CocListResume<CR>
 
   " Set K to show documentation
   " Use U to show documentation in preview window
