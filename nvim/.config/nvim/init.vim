@@ -277,7 +277,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release' }
 Plug 'dyng/ctrlsf.vim'
 
   nnoremap <Leader>f :CtrlSF<space>
-  vnoremap ?? <Plug>CtrlSFVwordExec
+  vmap ?? <Plug>CtrlSFVwordExec
 
   let g:ctrlsf_auto_focus = {
       \ "at": "start"
