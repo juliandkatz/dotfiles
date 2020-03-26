@@ -8,6 +8,7 @@ antigen theme romkatv/powerlevel10k
 ###########################
 
 antigen bundle git
+antigen bundle mercurial
 antigen bundle vi-mode
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-completions

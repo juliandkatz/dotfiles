@@ -330,7 +330,7 @@ fi
   # Show status of repositories of these types. You can add svn and/or hg if you are
   # using them. If you do, your prompt may become slow even when your current directory
   # isn't in an svn or hg reposotiry.
-  typeset -g POWERLEVEL9K_VCS_BACKENDS=(git)
+  typeset -g POWERLEVEL9K_VCS_BACKENDS=(git hg)
 
   typeset -g POWERLEVEL9K_VCS_SHORTEN_LENGTH=40
 
