@@ -255,7 +255,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release' }
     " Key mapping for special yank list to go with this extension
     nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
 
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
