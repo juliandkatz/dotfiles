@@ -155,6 +155,133 @@ Plug 'jistr/vim-nerdtree-tabs'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'dyng/ctrlsf.vim'
+
+  nnoremap <Leader>f :CtrlSF<space>
+  vmap ?? <Plug>CtrlSFVwordExec
+
+  let g:ctrlsf_auto_focus = {
+      \ "at": "start"
+      \ }
+
+  let g:ctrlsf_ackprg = 'rg'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+
+  nnoremap <c-p> :Files<CR>
+
+  " Make ripgrep the default command
+  command! -bang -nargs=* Rg
+    \ call fzf#vim#grep(
+    \   'rg --no-ignore --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+    \   <bang>0 ? fzf#vim#with_preview('up:60%')
+    \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+    \   <bang>0)
+
+  " Have to declare all actions to override some actions
+  let g:fzf_action = {
+      \ 'ctrl-t': 'tab split',
+      \ 'ctrl-i': 'split',
+      \ 'ctrl-v': 'vsplit'
+      \ }
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'ryanoasis/vim-devicons'
+
+  let g:webdevicons_enable=1
+  let g:webdevicons_enable_nerdtree = 1
+  let g:webdevicons_enable_airline_statusline = 1
+  set encoding=utf8
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Plug 'itchyny/lightline.vim'
+
+  let g:lightline = {
+    \ 'colorscheme': 'wombat',
+    \ 'active': {
+    \   'left': [ [ 'mode', 'paste' ],
+    \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
+    \ },
+    \ 'component_function': {
+    \   'cocstatus': 'coc#status'
+    \ },
+  \ }
+  set noshowmode    " Remove the normal status line
+
+  " Use auocmd to force lightline update.
+  autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" GO
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+
+  " let g:go_fmt_fail_silently = 1
+  " let g:go_fmt_experimental = 1
+
+  " autocmd FileType go nmap <leader>b  <Plug>(go-build)
+  autocmd FileType go nnoremap <leader>R  <Plug>(go-run)
+  autocmd FileType go nnoremap <silent><leader>s :GoAlternate<cr>
+  autocmd FileType go nnoremap <leader>t  <Plug>(go-test)
+  " autocmd FileType go nmap <Leader>i  <Plug>(go-info)
+
+  " Allows for vim-go to save the file when we run :GoBuild
+  set autowrite
+
+  " disable vim-go :GoDef short cut (gd)
+  " this is handled by LanguageClient [LC]
+  let g:go_def_mapping_enabled = 0
+
+  let g:go_auto_type_info = 1
+
+  let g:go_diagnostics_enabled = 0
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" JAVASCRIPT
+Plug 'pangloss/vim-javascript'
+"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'mxw/vim-jsx'
+
+  let g:jsx_ext_required = 0
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" TYPESCRIPT
+Plug 'leafgarland/typescript-vim'
+
+" RUBY
+Plug 'tpope/vim-endwise'
+
+" PYTHON
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'hdima/python-syntax'
+
+  let g:python_highlight_all = 1
+  let g:python_version_2 = 1
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" MARKDOWN
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'suan/vim-instant-markdown'
+
+  let g:vim_markdown_follow_anchor = 1
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'neoclide/coc.nvim', {'branch': 'release' }
 
   " Better display for messages
@@ -257,8 +384,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release' }
 
   " If we're inside of google3, change the language server
   let current_working_directory = getcwd()
+  echom current_working_directory
   if current_working_directory =~ "^/google/"
-    echom "overwrite"
+    echom current_working_directory
     autocmd User CocNvimInit call coc#config('languageserver', {
           \ 'golang': {
           \   "command": "/google/bin/releases/editor-devtools/ciderlsp",
@@ -266,135 +394,12 @@ Plug 'neoclide/coc.nvim', {'branch': 'release' }
           \     "--tooltag=coc-nvim",
           \     "--noforward_sync_responses"
           \   ],
+          \   "trace.server": "verbose",
           \   "filetypes": ["c", "cpp", "proto", "textproto", "go"]
           \ }
           \})
+    echom "DONE"
   endif
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'dyng/ctrlsf.vim'
-
-  nnoremap <Leader>f :CtrlSF<space>
-  vmap ?? <Plug>CtrlSFVwordExec
-
-  let g:ctrlsf_auto_focus = {
-      \ "at": "start"
-      \ }
-
-  let g:ctrlsf_ackprg = 'rg'
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-
-  nnoremap <c-p> :Files<CR>
-
-  " Make ripgrep the default command
-  command! -bang -nargs=* Rg
-    \ call fzf#vim#grep(
-    \   'rg --no-ignore --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
-    \   <bang>0 ? fzf#vim#with_preview('up:60%')
-    \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-    \   <bang>0)
-
-  " Have to declare all actions to override some actions
-  let g:fzf_action = {
-      \ 'ctrl-t': 'tab split',
-      \ 'ctrl-i': 'split',
-      \ 'ctrl-v': 'vsplit'
-      \ }
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'ryanoasis/vim-devicons'
-
-  let g:webdevicons_enable=1
-  let g:webdevicons_enable_nerdtree = 1
-  let g:webdevicons_enable_airline_statusline = 1
-  set encoding=utf8
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-Plug 'itchyny/lightline.vim'
-
-  let g:lightline = {
-    \ 'colorscheme': 'wombat',
-    \ 'active': {
-    \   'left': [ [ 'mode', 'paste' ],
-    \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
-    \ },
-    \ 'component_function': {
-    \   'cocstatus': 'coc#status'
-    \ },
-  \ }
-  set noshowmode    " Remove the normal status line
-
-  " Use auocmd to force lightline update.
-  autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" GO
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
-
-  let g:go_fmt_fail_silently = 1
-  let g:go_fmt_experimental = 1
-
-  " autocmd FileType go nmap <leader>b  <Plug>(go-build)
-  autocmd FileType go nnoremap <leader>R  <Plug>(go-run)
-  autocmd FileType go nnoremap <silent><leader>s :GoAlternate<cr>
-  autocmd FileType go nnoremap <leader>t  <Plug>(go-test)
-  " autocmd FileType go nmap <Leader>i  <Plug>(go-info)
-
-  " Allows for vim-go to save the file when we run :GoBuild
-  set autowrite
-
-  " disable vim-go :GoDef short cut (gd)
-  " this is handled by LanguageClient [LC]
-  let g:go_def_mapping_enabled = 0
-
-  let g:go_auto_type_info = 1
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" JAVASCRIPT
-Plug 'pangloss/vim-javascript'
-"
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'mxw/vim-jsx'
-
-  let g:jsx_ext_required = 0
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" TYPESCRIPT
-Plug 'leafgarland/typescript-vim'
-
-" RUBY
-Plug 'tpope/vim-endwise'
-
-" PYTHON
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'hdima/python-syntax'
-
-  let g:python_highlight_all = 1
-  let g:python_version_2 = 1
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" MARKDOWN
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'suan/vim-instant-markdown'
-
-  let g:vim_markdown_follow_anchor = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
