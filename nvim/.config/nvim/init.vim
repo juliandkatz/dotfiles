@@ -83,6 +83,7 @@ Plug 'djoshea/vim-autoread'
 Plug 'tpope/vim-obsession'
 Plug 'google/vim-searchindex'
 Plug 'psliwka/vim-smoothie'
+Plug 'honza/vim-snippets'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -222,6 +223,8 @@ Plug 'itchyny/lightline.vim'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " GO
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
@@ -246,6 +249,9 @@ Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 
   let g:go_diagnostics_enabled = 0
 
+  let g:go_gopls_enabled = 0
+
+  let g:go_info_mode = "guru"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " JAVASCRIPT
