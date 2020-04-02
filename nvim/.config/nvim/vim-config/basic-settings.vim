@@ -29,3 +29,6 @@ set smartcase         " Makes caps required
 " Set default fold method
 set foldmethod=indent
 set nofoldenable
+
+" Make neovim (only) preview substitutions on the fly
+set inccommand=nosplit
