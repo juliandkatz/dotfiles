@@ -57,7 +57,7 @@ filetype plugin indent on
   augroup END
 
   " From insert mode, Ctrl+u will uppercase the current word
-  inoremap <c-u> <esc>viWUA
+  inoremap <c-u> <esc>vBU`>a
 
   " Bring up vimrc in a split
   nnoremap <leader>ev :vsplit $MYVIMRC<cr>
