@@ -11,12 +11,18 @@ fi
 
 source ~/.zplug/init.zsh
 
-zplug 'romkatv/powerlevel10k', as:theme
+zplug 'romkatv/powerlevel10k', as:theme, depth:1
+
+# zplug mafredri/zsh-async, from:github
+# zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
 
 # oh-my-zsh specific
-zplug "plugins/git",   from:oh-my-zsh
+zplug "plugins/git",       from:oh-my-zsh
 zplug "plugins/vi-mode",   from:oh-my-zsh
-zplug "plugins/fzf",   from:oh-my-zsh
+zplug "plugins/fzf",       from:oh-my-zsh
+zplug "lib/history",       from:oh-my-zsh
+zplug "lib/directories",   from:oh-my-zsh
+# zplug "lib/clipboard",     from:oh-my-zsh  -- maybe this will help at some point
 
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-completions"
@@ -38,7 +44,7 @@ setopt autocd autopushd
 #printf "\e[?2004l" # can fix bracketed paste something?
 
 # improve responsiveness
-KEYTIMEOUT=1
+# KEYTIMEOUT=1
 
 # Make nvim the default EDITOR
 export EDITOR='nvim'
