@@ -16,7 +16,10 @@ augroup vimrc_help
 augroup END
 
 " Turn on spellchecking for .txt, markdown files
-autocmd FileType text,markdown :setlocal spell spelllang=en_us
+augroup filetype_based_spelling
+  autocmd!
+  autocmd FileType text,markdown :setlocal spell spelllang=en_us
+augroup END
 
 " ----------------------------------------
 " PLUGINS
