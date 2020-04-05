@@ -76,7 +76,7 @@ Plug 'jistr/vim-nerdtree-tabs'
   nnoremap <silent><leader>a :NERDTreeTabsToggle<cr>
 
   let g:nerdtree_tabs_focus_on_files=1
-  let g:NERDTreeWinSize=40
+  let g:NERDTreeWinSize=60
   let NERDTreeShowHidden=1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
