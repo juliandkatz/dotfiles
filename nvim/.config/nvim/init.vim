@@ -8,6 +8,16 @@ execute "source" VIM_CONFIG_DIR . "/mappings.vim"
 
 " MISC
 
+" Make help pages open as a vertical split
+" Stolen From: https://vi.stackexchange.com/a/4464
+augroup vimrc_help
+  autocmd!
+  autocmd BufEnter *.txt if &buftype == 'help' | wincmd L | endif
+augroup END
+
+" Turn on spellchecking for .txt, markdown files
+autocmd FileType text,markdown :setlocal spell spelllang=en_us
+
 " ----------------------------------------
 " PLUGINS
 " ----------------------------------------
