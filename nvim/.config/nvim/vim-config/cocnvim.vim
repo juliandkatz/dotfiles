@@ -99,15 +99,19 @@ Plug 'neoclide/coc-yank', {'do': 'yarn install --frozen-lockfile'}
 " If we're inside of google3, change the language server
 let current_working_directory = getcwd()
 if current_working_directory =~ "^/google/"
-  autocmd User CocNvimInit call coc#config('languageserver', {
-        \ 'golang': {
-        \   "command": "/google/bin/releases/editor-devtools/ciderlsp",
-        \   "args": [
-        \     "--tooltag=coc-nvim",
-        \     "--noforward_sync_responses"
-        \   ],
-        \   "trace.server": "verbose",
-        \   "filetypes": ["c", "cpp", "proto", "textproto", "go"]
-        \ }
-        \})
+  augroup google_language_server
+    autocmd!
+    autocmd User CocNvimInit call coc#config('languageserver', {
+          \ 'golang': {
+          \   "command": "/google/bin/releases/editor-devtools/ciderlsp",
+          \   "args": [
+          \     "--tooltag=coc-nvim",
+          \     "--noforward_sync_responses"
+          \   ],
+          \   "trace.server": "verbose",
+          \   "filetypes": ["c", "cpp", "proto", "textproto", "go"]
+          \ }
+          \})
+  augroup END
 endif
+

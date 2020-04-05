@@ -158,7 +158,10 @@ Plug 'itchyny/lightline.vim'
   set noshowmode    " Remove the normal status line
 
   " Use auocmd to force lightline update.
-  autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
+  augroup lightline-coc
+    autocmd!
+    autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
+  augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
