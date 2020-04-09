@@ -22,6 +22,7 @@ zplug "plugins/vi-mode",   from:oh-my-zsh
 zplug "plugins/fzf",       from:oh-my-zsh
 zplug "lib/history",       from:oh-my-zsh
 zplug "lib/directories",   from:oh-my-zsh
+zplug "lib/completion",   from:oh-my-zsh
 # zplug "lib/clipboard",     from:oh-my-zsh  -- maybe this will help at some point
 
 zplug "zsh-users/zsh-syntax-highlighting"
@@ -81,6 +82,7 @@ alias cat="bat"
 alias ll="exa -l"
 alias l="exa -la"
 alias fd="fdfind"
+alias vimrc="cd ~/dotfiles/nvim/.config/nvim; vim init.vim"
 
 alias dev="cd ${HOME}/dev"
 
