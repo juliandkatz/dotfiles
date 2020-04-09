@@ -12,7 +12,7 @@
 [alias]
 	d = difftool
 [pager]
-  diff = diff-so-fancy | less  --tabs=4 -S --pattern '^(commit )|((added|deleted|modified): )'
+  diff = diff-so-fancy | less -+$LESS -R --pattern '^(commit )|((added|deleted|modified): )'
   # Try fixing the issue with `git diff --name-only` by installing a different pager like "moar"
 [color]
 	ui = true
@@ -34,3 +34,7 @@
 
 [url "sso://gke-internal.git.corp.google.com"]
 	insteadof = https://gke-internal.git.corp.google.com
+[pull]
+	rebase = false
+[core]
+	pager = less -+$LESS -R
