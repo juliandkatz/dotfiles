@@ -41,7 +41,6 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
 
@@ -51,7 +50,8 @@ nmap <leader>rf <Plug>(coc-refactor)
 " vmap <leader>f  <Plug>(coc-format-selected)
 " nmap <leader>f  <Plug>(coc-format-selected)
 " " Show all diagnostics
-nmap <silent> <space>d  :<C-u>CocList diagnostics<cr>
+nmap <silent> <leader>d  :<C-u>CocList diagnostics<cr>
+nmap <silent> <leader>cl  :CocList<cr>
 " Manage extensions
 " nmap <silent> <leader>e  :<C-u>CocList extensions<cr>
 " Show commands
