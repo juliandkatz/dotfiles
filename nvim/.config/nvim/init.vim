@@ -15,18 +15,70 @@ execute "source" VIM_CONFIG_DIR . "/mappings.vim"
 " BEGIN PLUGIN DECLARATIONS
 call plug#begin('~/.config/nvim/plugged')
 
+Plug 'flwyd/vim-conjoin'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tomtom/tcomment_vim'
 Plug 'elzr/vim-json'
-Plug 'easymotion/vim-easymotion' 
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'nhooyr/neoman.vim'
 Plug 'djoshea/vim-autoread'
-Plug 'tpope/vim-obsession'
 Plug 'google/vim-searchindex'
 Plug 'psliwka/vim-smoothie'
 Plug 'honza/vim-snippets'
+Plug 'easymotion/vim-easymotion' 
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Plug 'haya14busa/incsearch.vim'
+
+  " Basic Usage
+  map /  <Plug>(incsearch-forward)
+  map ?  <Plug>(incsearch-backward)
+  map g/ <Plug>(incsearch-stay)
+
+  " Advanced Usage
+  map n  <Plug>(incsearch-nohl-n)
+  map N  <Plug>(incsearch-nohl-N)
+  map *  <Plug>(incsearch-nohl-*)
+  map #  <Plug>(incsearch-nohl-#)
+  map g* <Plug>(incsearch-nohl-g*)
+  map g# <Plug>(incsearch-nohl-g#)
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Plug 'haya14busa/incsearch-easymotion.vim'
+
+  " Basic Usage
+  map z/ <Plug>(incsearch-easymotion-/)
+  map z? <Plug>(incsearch-easymotion-?)
+  map zg/ <Plug>(incsearch-easymotion-stay)
+
+  " Julian Usage
+  map <space><space>/ <Plug>(incsearch-easymotion-/)
+  map <space><space>? <Plug>(incsearch-easymotion-?)
+
+  " Advanced Usage
+
+  " incsearch.vim x fuzzy x vim-easymotion
+
+  " function! s:config_easyfuzzymotion(...) abort
+  "   return extend(copy({
+  "   \   'converters': [incsearch#config#fuzzy#converter()],
+  "   \   'modules': [incsearch#config#easymotion#module()],
+  "   \   'keymap': {"\<CR>": '<Over>(easymotion)'},
+  "   \   'is_expr': 0,
+  "   \   'is_stay': 1
+  "   \ }), get(a:, 1, {}))
+  " endfunction
+  "
+  " noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
