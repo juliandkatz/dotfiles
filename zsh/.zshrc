@@ -14,7 +14,6 @@ source ~/.zplug/init.zsh
 zplug 'romkatv/powerlevel10k', as:theme, depth:1
 
 # zplug mafredri/zsh-async, from:github
-# zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
 
 # oh-my-zsh specific
 zplug "plugins/git",       from:oh-my-zsh
@@ -22,7 +21,7 @@ zplug "plugins/vi-mode",   from:oh-my-zsh
 zplug "plugins/fzf",       from:oh-my-zsh
 zplug "lib/history",       from:oh-my-zsh
 zplug "lib/directories",   from:oh-my-zsh
-zplug "lib/completion",   from:oh-my-zsh
+zplug "lib/completion",    from:oh-my-zsh
 # zplug "lib/clipboard",     from:oh-my-zsh  -- maybe this will help at some point
 
 zplug "zsh-users/zsh-syntax-highlighting"
@@ -90,11 +89,12 @@ alias dev="cd ${HOME}/dev"
 alias glog="git log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'"
 
 alias gpmr="git pull origin master --rebase"
-alias gdno="git diff --name-only"
+alias gdno="git --no-pager diff --name-only"
 alias gcho="git branch | fzf | xargs -I {} git checkout {}"
 alias gchod="git branch | fzf | xargs -I {} git branch -D {}"
 alias gcfd="git clean -fd"
 alias gft="git fetch --tags"
+alias gl="git log"
 
 # variables for faster kubectl
 alias k="kubectl"
