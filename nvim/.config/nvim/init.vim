@@ -8,6 +8,19 @@ execute "source" VIM_CONFIG_DIR . "/mappings.vim"
 
 " MISC
 
+" Make help pages open as a vertical split
+" Stolen From: https://vi.stackexchange.com/a/4464
+augroup vimrc_help
+  autocmd!
+  autocmd BufEnter *.txt if &buftype == 'help' | wincmd L | endif
+augroup END
+
+" Turn on spellchecking for .txt, markdown files
+augroup filetype_based_spelling
+  autocmd!
+  autocmd FileType text,markdown :setlocal spell spelllang=en_us
+augroup END
+
 " ----------------------------------------
 " PLUGINS
 " ----------------------------------------
@@ -128,7 +141,7 @@ Plug 'jistr/vim-nerdtree-tabs'
   nnoremap <silent><leader>a :NERDTreeTabsToggle<cr>
 
   let g:nerdtree_tabs_focus_on_files=1
-  let g:NERDTreeWinSize=40
+  let g:NERDTreeWinSize=60
   let NERDTreeShowHidden=1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -197,7 +210,10 @@ Plug 'itchyny/lightline.vim'
   set noshowmode    " Remove the normal status line
 
   " Use auocmd to force lightline update.
-  autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
+  augroup lightline-coc
+    autocmd!
+    autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
+  augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
