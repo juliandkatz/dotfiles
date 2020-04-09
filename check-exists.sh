@@ -28,7 +28,8 @@ tools=( \
   shfmt \
   nix \
   fd \
-  fdfind
+  fdfind \
+  zplug
 )
 
 header_printed=0
