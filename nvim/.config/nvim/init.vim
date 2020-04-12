@@ -4,7 +4,26 @@ filetype plugin indent on
 let VIM_CONFIG_DIR=expand("$HOME/.config/nvim/vim-config")
 
 execute "source" VIM_CONFIG_DIR . "/basic-settings.vim"
+
+" WIP Settings
+set nowrapscan
+
 execute "source" VIM_CONFIG_DIR . "/mappings.vim"
+
+" WIP Mappings
+
+" Create movements for 'in/at next parens' and 'in/at last parens'
+onoremap in( :<c-u>normal! f(vi(<cr>
+onoremap an( :<c-u>normal! f(va(<cr>
+onoremap il( :<c-u>normal! F)vi(<cr>
+onoremap al( :<c-u>normal! F)va(<cr>
+
+" Do the same for curly braces... we need searching for this!  Will come in
+" Chapter 30
+" onoremap in{ :<c-u>normal! /{<cr>vi{<cr>
+" onoremap an{ :<c-u>normal! /{<cr>va{<cr>
+" onoremap il{ :<c-u>normal! ?}<cr>vi{<cr>
+" onoremap al{ :<c-u>normal! ?}<cr>va{<cr>
 
 " MISC
 
