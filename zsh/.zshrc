@@ -82,6 +82,7 @@ alias ll="exa -l"
 alias l="exa -la"
 alias fd="fdfind"
 alias vimrc="cd ~/dotfiles/nvim/.config/nvim; vim init.vim"
+alias dotfiles="cd ~/dotfiles"
 
 alias dev="cd ${HOME}/dev"
 
