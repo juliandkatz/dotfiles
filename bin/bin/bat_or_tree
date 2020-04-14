@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [[ -d "$1" ]]; then
+  tree -C "$1" | head -200
+else
+  bat --style=numbers --color=always "$1" | head -500
+fi
