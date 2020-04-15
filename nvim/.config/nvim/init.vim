@@ -25,6 +25,9 @@ onoremap al( :<c-u>normal! F)va(<cr>
 " onoremap il{ :<c-u>normal! ?}<cr>vi{<cr>
 " onoremap al{ :<c-u>normal! ?}<cr>va{<cr>
 
+" Underline the current text with [-]
+nnoremap <leader>ul mgVyp`<esc>Vr-<esc>`g<esc>
+
 " MISC
 
 " Make help pages open as a vertical split
