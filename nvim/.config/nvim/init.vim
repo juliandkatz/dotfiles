@@ -6,7 +6,9 @@ let VIM_CONFIG_DIR=expand("$HOME/.config/nvim/vim-config")
 execute "source" VIM_CONFIG_DIR . "/basic-settings.vim"
 
 " WIP Settings
-set nowrapscan
+set nowrapscan  " Searches do not wrap, they are top to bottom
+set splitbelow  " horizontal splits will open the new file on bottom
+set splitright  " vertical splits open on the right, and splitting a file now makes the cursor end up on the right pane
 
 execute "source" VIM_CONFIG_DIR . "/mappings.vim"
 
