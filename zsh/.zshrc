@@ -83,6 +83,8 @@ alias l="exa -la"
 alias fd="fdfind"
 alias vimrc="cd ~/dotfiles/nvim/.config/nvim; vim init.vim"
 alias dotfiles="cd ~/dotfiles"
+alias gld="gcloud"
+alias szsh="source ~/.zshrc"
 
 alias dev="cd ${HOME}/dev"
 
