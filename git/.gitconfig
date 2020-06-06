@@ -12,7 +12,8 @@
 [alias]
 	d = difftool
 [pager]
-  diff = diff-so-fancy | less -+$LESS -R --pattern '^(commit )|((added|deleted|modified): )'
+  diff = diff-so-fancy | less -+$LESS -R --pattern '^(commit )|((added|deleted|modified|renamed): )'
+  branch = less --quit-if-one-screen
   # Try fixing the issue with `git diff --name-only` by installing a different pager like "moar"
 [color]
 	ui = true
