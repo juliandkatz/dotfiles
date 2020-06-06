@@ -28,6 +28,11 @@ imap <expr><c-K> pumvisible() ? "\<C-p>" : "\<C-h>"
 " option.  But it turns out that they're all broken or slow.  The best
 " option seems to be the built in C-y.
 
+" Somehow <CR> is still working to select autocomplete at some weird times.
+" Lets completely disable it
+
+" inoremap <expr> <cr> pumvisible() ? "\<C-g>u\<CR>" : "\<C-g>u\<CR>"
+
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
 
@@ -52,6 +57,7 @@ nmap <leader>rf <Plug>(coc-refactor)
 " " Show all diagnostics
 nmap <silent> <leader>d  :<C-u>CocList diagnostics<cr>
 nmap <silent> <leader>cl  :CocList<cr>
+nmap <silent> <leader>cc  :CocCommand<cr>
 " Manage extensions
 " nmap <silent> <leader>e  :<C-u>CocList extensions<cr>
 " Show commands
@@ -97,6 +103,7 @@ Plug 'neoclide/coc-yank', {'do': 'yarn install --frozen-lockfile'}
   nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
 
 " If we're inside of google3, change the language server
+" Try some of these options: g/vi-users/qYySgz_2sqo/DtmpEh0qCAAJ
 let current_working_directory = getcwd()
 if current_working_directory =~ "^/google/"
   augroup google_language_server
