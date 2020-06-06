@@ -182,6 +182,14 @@ Plug 'dyng/ctrlsf.vim'
 
   let g:ctrlsf_ackprg = 'rg'
 
+  " Try to make these as similar to fzf bindings as possible
+  " vsplit is notably different because Ctrl-v is a visual editing command
+  let g:ctrlsf_mapping = {
+      \ "vsplit"   : "<C-O>",
+      \ "split"    : "",
+      \ "tab"      : "<C-T>",
+      \ }
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
