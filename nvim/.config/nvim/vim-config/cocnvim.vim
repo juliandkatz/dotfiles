@@ -63,7 +63,7 @@ nmap <silent> <leader>cc  :CocCommand<cr>
 " Show commands
 " nmap <silent> <leader>c  :<C-u>CocList commands<cr>
 " " Find symbol of current document
-" nmap <silent> <leader>o  :<C-u>CocList outline<cr>
+nmap <silent> <leader>col  :<C-u>CocList outline<cr>
 " " Search workspace symbols
 " nmap <silent> <leader>s  :<C-u>CocList -I symbols<cr>
 " " Do default action for next item.
