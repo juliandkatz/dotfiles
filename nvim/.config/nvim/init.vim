@@ -28,7 +28,7 @@ onoremap al( :<c-u>normal! F)va(<cr>
 " onoremap al{ :<c-u>normal! ?}<cr>va{<cr>
 
 " Underline the current text with [-]
-nnoremap <leader>ul mgVyp`<esc>Vr-<esc>`g<esc>
+nnoremap <leader>ul VypVr-<esc>o<esc>
 
 " MISC
 
@@ -60,7 +60,7 @@ Plug 'elzr/vim-json'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'nhooyr/neoman.vim'
 Plug 'djoshea/vim-autoread'
-Plug 'google/vim-searchindex'
+Plug 'google/vim-searchindex' " This is broken by incsearch
 Plug 'psliwka/vim-smoothie'
 Plug 'honza/vim-snippets'
 Plug 'easymotion/vim-easymotion' 
