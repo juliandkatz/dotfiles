@@ -77,13 +77,15 @@ alias vim="nvim"
 alias v="vim"
 alias c="clear"
 alias dk="docker"
-alias cat-basic="cat"
+alias cat-basic="$(which cat)"
 alias cat="bat"
 alias ll="exa -l"
 alias l="exa -la"
 alias fd="fdfind"
 alias vimrc="cd ~/dotfiles/nvim/.config/nvim; vim init.vim"
 alias dotfiles="cd ~/dotfiles"
+alias gld="gcloud"
+alias szsh="source ~/.zshrc"
 
 alias dev="cd ${HOME}/dev"
 
@@ -156,8 +158,10 @@ aws () {
 # only store unique commands in the history... improves fzf Ctrl-R
 setopt HIST_IGNORE_ALL_DUPS
 
+export FZF_COMPLETION_OPTS="--preview 'bat_or_tree {}'"
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow 2> /dev/null'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
 
 ############################
 #####     SOURCING     #####
