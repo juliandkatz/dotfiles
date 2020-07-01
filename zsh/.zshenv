@@ -29,7 +29,6 @@ alias gft="git fetch --tags"
 alias gl="git log"
 
 # variables for faster kubectl
-alias k="kubectl"
 alias kls="kubectl config get-contexts"
 alias kaf="kubectl apply -f"
 

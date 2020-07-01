@@ -19,6 +19,7 @@ zplug 'romkatv/powerlevel10k', as:theme, depth:1
 zplug "plugins/git",       from:oh-my-zsh
 zplug "plugins/vi-mode",   from:oh-my-zsh
 zplug "plugins/fzf",       from:oh-my-zsh
+zplug "plugins/kubectl",   from:oh-my-zsh # for some reason this won't source the autocomplete, even though it runs the script
 zplug "lib/history",       from:oh-my-zsh
 zplug "lib/directories",   from:oh-my-zsh
 zplug "lib/completion",    from:oh-my-zsh
@@ -101,7 +102,6 @@ alias gft="git fetch --tags"
 alias gl="git log"
 
 # variables for faster kubectl
-alias k="kubectl"
 alias kls="kubectl config get-contexts"
 alias kaf="kubectl apply -f"
 
@@ -120,14 +120,15 @@ alias tmkw="tmux kill-window"
 ##################################
 
 ### KUBECTL ###
-kubectl () {
-    command kubectl $*
-    if [[ -z $KUBECTL_COMPLETE ]]
-    then
-        source <(command kubectl completion zsh)
-        KUBECTL_COMPLETE=1
-    fi
-}
+source <(command kubectl completion zsh)
+# kubectl () {
+#     command kubectl $*
+#     if [[ -z $KUBECTL_COMPLETE ]]
+#     then
+#         source <(command kubectl completion zsh)
+#         KUBECTL_COMPLETE=1
+#     fi
+# }
 
 ### GCLOUD ###
 gcloud () {
