@@ -2,9 +2,9 @@
 let mapleader = "\<Space>"
 set number            " Show line numbers
 set expandtab         " Use spaces instead of tabs
-set tabstop=2         " Set literal tab character to two spaces
-set softtabstop=2     " Fixes some weird behavior
-set shiftwidth=2      " Number of auto-indent spaces
+set tabstop=4         " Set literal tab character to two spaces
+set softtabstop=4     " Fixes some weird behavior
+set shiftwidth=4      " Number of auto-indent spaces
 set colorcolumn=100   " Add column n characters from left
 set linebreak         " Break line on whole word
 set ttyfast           " Improves drawing of screen when scrolling

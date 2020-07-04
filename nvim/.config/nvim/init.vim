@@ -144,9 +144,9 @@ Plug 'joshdick/onedark.vim'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Plug 'jiangmiao/auto-pairs'
-"
-"   let g:AutoPairsFlyMode=1
+Plug 'jiangmiao/auto-pairs'
+
+  let g:AutoPairsFlyMode=1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 

@@ -93,8 +93,10 @@ Plug 'fannheyward/coc-markdownlint', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
 " Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-pairs', {'do': 'yarn install --frozen-lockfile'}
 
+Plug 'josa42/coc-go', {'do': 'yarn install --frozen-lockfile'}
+autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
+ 
 " This on only works when installed with CocInstall"
 " Plug 'iamcco/coc-diagnostic', {'do': 'yarn install --frozen-lockfile'} "
 
