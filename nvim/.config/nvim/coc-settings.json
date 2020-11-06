@@ -1,10 +1,5 @@
 {
   "languageserver": {
-    "golang": {
-      "command": "gopls",
-      "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
-      "filetypes": ["go"]
-    },
     "bash": {
       "command": "bash-language-server",
       "args": ["start"],
@@ -18,6 +13,11 @@
     }
   },
 
+  "go.goplsOptions": {
+    "completeUnimported": true,
+    "deepCompletion": true
+  },
+
   // don't know what this does
   "coc.preferences.hoverTarget": "float",
 
@@ -29,7 +29,7 @@
 
   // Make "v" the vsplit command in CocList
   "list.normalMappings": {
-    "v": "action:vsplit",
+    "v": "action:vsplit"
   },
 
   // makes the completion automatically select the first completed item

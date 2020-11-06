@@ -1,5 +1,5 @@
 " Better display for messages
-set cmdheight=2 "why is this a thing?
+set cmdheight=2
 
 " don't give |ins-completion-menu| messages.
 set shortmess+=c
@@ -85,9 +85,6 @@ function! s:show_documentation()
   endif
 endfunction
 
-" Format go code on save
-" autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
-
 " COC EXTENSIONS
 Plug 'fannheyward/coc-markdownlint', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
@@ -95,7 +92,6 @@ Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
 
 Plug 'josa42/coc-go', {'do': 'yarn install --frozen-lockfile'}
-autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
  
 " This on only works when installed with CocInstall"
 " Plug 'iamcco/coc-diagnostic', {'do': 'yarn install --frozen-lockfile'} "

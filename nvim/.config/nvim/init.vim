@@ -146,7 +146,7 @@ Plug 'joshdick/onedark.vim'
 
 Plug 'jiangmiao/auto-pairs'
 
-  let g:AutoPairsFlyMode=1
+  let g:AutoPairsFlyMode=0
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -174,7 +174,7 @@ Plug 'jistr/vim-nerdtree-tabs'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'dyng/ctrlsf.vim'
 
-  nnoremap <Leader>f :CtrlSF<space>
+  nnoremap <Leader>f :CtrlSF<space>-R<space>
   vmap ?? <Plug>CtrlSFVwordExec
 
   let g:ctrlsf_auto_focus = {
