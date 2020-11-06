@@ -87,6 +87,7 @@ alias vimrc="cd ~/dotfiles/nvim/.config/nvim; vim init.vim"
 alias dotfiles="cd ~/dotfiles"
 alias gld="gcloud"
 alias szsh="source ~/.zshrc"
+alias m="make"
 
 alias dev="cd ${HOME}/dev"
 
